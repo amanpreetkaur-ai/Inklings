@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Feedback</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="feedback.css">
+        <!-- Icons CDN Link -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!--Font CDN Link-->
+        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+    </head>
+<body>
+
+    <div class="nav-overlay" id="navOverlay"></div>
+    <div class="side-drawer" id="sideDrawer">
+        <div class="drawer-header">
+            <h2>Chapters</h2>
+            <button class="close-btn" id="closeBtn">✕</button>
+        </div>
+        <ul class="drawer-links">
+            <li><a href="Exclusives.html"><i class="fa-solid fa-bomb"></i>-Inklings Exclusives</a></li>
+            <li><a href="Genres.html"><i class="fa-solid fa-book"></i>-Genres</a></li>
+            <li><a href="Languages.html"><i class="fa-solid fa-language"></i>-Languages</a></li>
+            <li><a href="personal-details.html"><i class="fa-solid fa-pen"></i>-Write</a></li>
+        </ul>
+    </div>
+
+    <!-- Search Panel moved OUTSIDE the navbar to fix the overlap -->
+    <div id="search-panel">
+        <input type="text" placeholder="Search books...">
+    </div>
+
+
+    <!-- 2. NAVBAR -->
+    <nav class="navbar">
+        <!-- Hamburger Menu restored -->
+        <div class="nav-links">
+            <button style="background-color: transparent; border: none; outline: none; cursor: pointer;" class="menu-toggle" id="menuToggle" aria-label="Open Navigation">
+                <i style="color: white; font-size: 20px;" class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+        
+        <div class="logo"><a style="text-decoration: none; color: white;" href="Index.html">Inklings</a></div>
+        
+        <ul class="nav-links">
+            <li><a><i class="fa-regular fa-heart"></i></a></li>
+            <li>
+                <a href="#" onclick="toggleSearch(event)">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </a>
+            </li>
+            <!-- Note: Search panel was removed from here -->
+            <li><a href="registration.html"><i class="signup"></i>Signup</a></li>
+        </ul>
+    </nav>
+
+    <!-- Background and Main Content -->
+    <div class="liquid-bg"></div>
+        <main>
+            <h1>Complaints & Suggestions</h1>
+            <form>
+                <label for="uname">
+                    <i class="fa fa-solid fa-user"></i>
+                    Name
+                </label>
+                <input type="text" id="uname" 
+                    name="uname" required>
+
+                <label for="email">
+                    <i class="fa fa-solid fa-envelope"></i>
+                    Email Address
+                </label>
+                <input type="email" id="email" 
+                    name="email" required>
+
+                <label>
+                    <i class="fa-solid fa-face-smile"></i>
+                    Type of Feedback
+                </label>
+                <div class="radio-group">
+                    <input type="radio" id="opt1" 
+                        name="feedback" value="one" checked>
+                    <label for="yes">Complaint</label>
+
+                    <input type="radio" id="opt2" 
+                        name="feedback" value="two">
+                    <label for="no">Suggestion</label>
+                </div>
+                <label for="msg">
+                    <i class="fa-solid fa-comments" 
+                    style="margin-right: 3px;"></i>
+                    Elaborate Please:
+                </label>
+                <textarea id="msg" name="msg" 
+                        rows="5" cols="12" required>
+                </textarea>
+                <button type="submit">
+                    Submit
+                </button>
+            </form>
+        </main>
+        <!-- footer -->
+        <footer>
+            <div><p>&copy; 2026 The Three Musketeers Co.<br>All rights reserved.</p></div>
+        </footer>
+        <script src="script.js"></script>
+    </body>
+</html>

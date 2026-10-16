@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows 8 Metro UI Tile Grid</title>
+    <style>
+        /* Base page styling reminiscent of Windows 8 default theme */
+        body {
+            background-color: #0072c6; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 40px;
+            color: #ffffff;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            font-weight: 300;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        /* The Grid container managing tile placement */
+        .metro-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            grid-auto-rows: 130px;
+            gap: 10px; /* Spacing between tiles */
+            max-width: 1100px;
+        }
+
+        /* Base class for all tiles */
+        .tile {
+            position: relative;
+            color: white;
+            padding: 15px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.1s ease, box-shadow 0.1s ease;
+            user-select: none;
+            box-shadow: inset 0 0 0 0px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Classic Windows 8 "tilt/press" dynamic feedback effect */
+        .tile:active {
+            transform: scale(0.97);
+        }
+
+        /* Subtle outline highlight upon hovering */
+        .tile:hover {
+            outline: 2px solid rgba(255, 255, 255, 0.4);
+        }
+
+        /* Tile content structure */
+        .tile .icon {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .tile .label {
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+            font-size: 0.9rem;
+            font-weight: 400;
+        }
+
+        .tile .badge {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Sizing variations natively mapping to the grid system */
+        .tile.small {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+
+        .tile.wide {
+            grid-column: span 2;
+            grid-row: span 1;
+        }
+
+        .tile.large {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        /* Core Windows 8 accent palettes */
+        .bg-teal { background-color: #00aba9; }
+        .bg-magenta { background-color: #ff0097; }
+        .bg-purple { background-color: #a200ff; }
+        .bg-orange { background-color: #e3a21a; }
+        .bg-blue { background-color: #2d89ef; }
+        .bg-green { background-color: #00a300; }
+        .bg-dark-purple { background-color: #571c75; }
+    </style>
+</head>
+<body>
+
+    <h1>Start</h1>
+
+    <!-- Grid Layout Container -->
+    <div class="metro-grid">
+        
+        <!-- Standard 1x1 Square Tile -->
+        <a href="#" class="tile small bg-teal">
+            <span class="icon">✉</span>
+            <span class="label">Mail</span>
+            <span class="badge">4</span>
+        </a>
+
+        <!-- 2x1 Horizontal Wide Tile -->
+        <a href="#" class="tile wide bg-magenta">
+            <span class="icon">📅</span>
+            <span class="label">Calendar</span>
+        </a>
+
+        <!-- Standard 1x1 Square Tile -->
+        <a href="#" class="tile small bg-purple">
+            <span class="icon">🎵</span>
+            <span class="label">Music</span>
+        </a>
+
+        <!-- Standard 1x1 Square Tile -->
+        <a href="#" class="tile small bg-orange">
+            <span class="icon">🌐</span>
+            <span class="label">IE Browser</span>
+        </a>
+
+        <!-- 2x2 Large Square Tile Block -->
+        <a href="#" class="tile large bg-blue">
+            <span class="icon">⛅</span>
+            <div style="font-size: 1.8rem; margin-top: 20px; font-weight: 300;">72° New York</div>
+            <div style="font-size: 0.9rem; opacity: 0.8;">Sunny Day</div>
+            <span class="label">Weather</span>
+        </a>
+
+        <!-- Standard 1x1 Square Tile -->
+        <a href="#" class="tile small bg-green">
+            <span class="icon">📷</span>
+            <span class="label">Photos</span>
+        </a>
+
+        <!-- 2x1 Horizontal Wide Tile -->
+        <a href="#" class="tile wide bg-dark-purple">
+            <span class="icon">🎮</span>
+            <span class="label">Xbox Games</span>
+        </a>
+
+    </div>
+
+</body>
+</html>

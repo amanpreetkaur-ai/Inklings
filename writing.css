@@ -1,0 +1,389 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* =======================
+        MAIN
+======================= */
+
+main {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+    background-size: cover;
+    background-position: center;
+}
+
+.liquid-bg{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background: linear-gradient(45deg, #85858589, #9996b7, #2f2f65, #0f324bca);
+  background-size: 400% 400%;
+  overflow: hidden;
+  animation: gradientFlow 10s ease infinite;
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes infiniteSweep {
+  0% { left: -150%; }
+  23% { left: 150%; }  
+  100% { left: 150%; } 
+}
+
+.liquid-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  z-index: 1;
+  pointer-events: none;
+  
+  /* Replace your old animation line with this one: */
+  animation: infiniteSweep 5s cubic-bezier(0.2, 0, 0.2, 1) infinite;
+}
+
+/* =======================
+        NAVBAR
+======================= */
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    
+    /* Sticky Glass Navbar */
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    
+    background: rgba(15, 50, 75, 0.4);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.0);
+    transform: translate3d(0, 0, 0); /* Glitch prevention */
+    
+    padding: 15px 30px;
+    color: white;
+    font-family: "Dancing Script", cursive;
+}
+
+.logo {
+    font-size: 35px;
+    font-weight: bold;
+}
+
+/* =======================
+      FORM CONTAINER
+======================= */
+
+.content-details {
+    width: 700px;
+    max-width: 95%;
+    padding: 35px;
+
+    /* Glassmorphism Main Container */
+    background: rgba(15, 50, 75, 0.25);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    
+    /* 3D Glass Edges & Shadow */
+    border: 1px solid rgba(255, 255, 255, 0.0);
+    border-top: 1px solid rgba(255, 255, 255, 0.0);
+    border-left: 1px solid rgba(255, 255, 255, 0.0);
+    border-radius: 30px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    
+    transform: translate3d(0, 0, 0); /* Glitch prevention */
+}
+
+/* =======================
+        HEADINGS
+======================= */
+
+h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: white;
+    font-size: 3rem;
+    font-family: "Dancing Script", cursive;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+h3 {
+    margin: 20px 0 10px;
+    color: white;
+    font-size: 2rem;
+    font-family: "Dancing Script", cursive;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+hr {
+    margin: 25px 0;
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.0); /* Soft glass divider */
+}
+
+/* =======================
+        FORM
+======================= */
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+label {
+    color: white;
+    font-size: 22px;
+    font-family: "Dancing Script", cursive;
+}
+
+/* =======================
+    INPUTS & TEXTAREA
+======================= */
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 12px 15px;
+    
+    /* Frosted Inputs */
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.0);
+    border-radius: 15px;
+    outline: none;
+    
+    color: white;
+    font-size: 18px;
+    font-family: "Dancing Script", cursive;
+    transition: 0.3s ease;
+}
+
+/* Fix for Select dropdown text legibility on some browsers */
+select option {
+    background-color: #0f324b;
+    color: white;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Glowing Glass Focus */
+input:focus,
+textarea:focus,
+select:focus {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.0);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+/* Autofill styling fix */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px #224a66 inset !important;
+    -webkit-text-fill-color: white !important;
+    border-radius: 15px;
+}
+
+/* =======================
+      FILE INPUT
+======================= */
+
+input[type="file"] {
+    display: none;
+}
+
+/* Glass Upload Button */
+.upload-btn {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px dashed rgba(255, 255, 255, 0.0);
+    border-radius: 15px;
+    
+    color: white;
+    font-size: 22px;
+    font-family: "Dancing Script", cursive;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.upload-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.0);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+#manuscript-name,
+#cover-name {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 18px;
+    font-family: "Dancing Script", cursive;
+}
+
+/* =======================
+      RADIO BUTTONS
+======================= */
+
+.radio-group {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.radio-group input {
+    width: auto;
+    accent-color: #6a95b6; /* Updates the native dot color */
+}
+
+.radio-group label {
+    margin-right: 20px;
+}
+
+/* =======================
+      CHECKBOXES
+======================= */
+
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.check-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-top: 8px;
+    flex-shrink: 0;
+    accent-color: #6a95b6; /* Updates the native checkmark color */
+}
+
+.check-item label {
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* =======================
+        BUTTON
+======================= */
+
+button {
+    margin-top: 20px;
+    padding: 15px;
+    
+    /* Glass Submit Button */
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.0);
+    border-radius: 20px;
+    
+    color: white;
+    font-size: 24px;
+    font-family: "Dancing Script", cursive;
+    font-weight: bolder;
+    cursor: pointer;
+    
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* =======================
+        FOOTER
+======================= */
+
+footer {
+    /* Glass Footer */
+    background: rgba(15, 50, 75, 0.4);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-top: 1px solid rgba(255, 255, 255, 0.0);
+    
+    color: white;
+    text-align: center;
+    padding: 18px;
+    font-size: 22px;
+    font-family: "Dancing Script", cursive;
+}
+
+/* =======================
+      RESPONSIVE
+======================= */
+
+/* Uncommented and updated to work nicely with the new glass sizing */
+@media(max-width:768px){
+    .content-details {
+        width: 95%;
+        padding: 25px;
+    }
+
+    h2 { font-size: 2.4rem; }
+    h3 { font-size: 1.8rem; }
+    label { font-size: 20px; }
+    
+    input,
+    textarea,
+    select {
+        font-size: 18px;
+    }
+
+    .radio-group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+}

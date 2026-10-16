@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Inklings</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--CSS Link-->
+        <link rel="stylesheet" href="main.css">
+<!--Icon CDN Link-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!--Font CDN Link-->
+        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+    
+    </head>
+<body>
+
+    <div class="nav-overlay" id="navOverlay"></div>
+    <div class="side-drawer" id="sideDrawer">
+        <div class="drawer-header">
+            <h2>Chapters</h2>
+            <button class="close-btn" id="closeBtn">✕</button>
+        </div>
+        <ul class="drawer-links">
+            <li><a href="Exclusives.html"><i class="fa-solid fa-bomb"></i>-Inklings Exclusives</a></li>
+            <li><a href="Genres.html"><i class="fa-solid fa-book"></i>-Genres</a></li>
+            <li><a href="Languages.html"><i class="fa-solid fa-language"></i>-Languages</a></li>
+            <li><a href="personal-details.html"><i class="fa-solid fa-pen"></i>-Write</a></li>
+        </ul>
+    </div>
+
+    <!-- Search Panel moved OUTSIDE the navbar to fix the overlap -->
+    <div id="search-panel">
+        <input type="text" placeholder="Search books...">
+    </div>
+
+
+    <!-- 2. NAVBAR -->
+    <nav class="navbar">
+        <!-- Hamburger Menu restored -->
+        <div class="nav-links">
+            <button style="background-color: transparent; border: none; outline: none; cursor: pointer;" class="menu-toggle" id="menuToggle" aria-label="Open Navigation">
+                <i style="color: white; font-size: 20px;" class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+        
+        <div class="logo"><a style="text-decoration: none; color: white;" href="Index.html">Inklings</a></div>
+        
+        <ul class="nav-links">
+            <li><a><i class="fa-regular fa-heart"></i></a></li>
+            <li>
+                <a href="#" onclick="toggleSearch(event)">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </a>
+            </li>
+            <!-- Note: Search panel was removed from here -->
+            <li><a href="registration.html"><i class="signup"></i>Signup</a></li>
+        </ul>
+    </nav>
+
+    <!-- Background and Main Content -->
+    <div class="liquid-bg"></div>
+<main>
+    <div class="main-body">
+        <div class="left">
+            <div class="trend">Currently Trending</div>
+    <!--Featured Books Segment in Currently Trending-->
+            <div class="scroll">
+                <div class="category">
+                    <div class="books">
+                        <img class="cover" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQa9-2SPOHl8mn-4-WUqpanzaeOle-lnZM9kU3qyyex_oR6M01YEwB_XxRs5yH5ywKbsdTIXThbO-yCy7WkSAZ_3gPZPmJYOcVV9znsgZo&s=10">
+                        <p>Ballad of Falling Dragons - Sarah A. Parker</p>
+                    </div>
+                    <div class="books">
+                        <img class="cover" src="https://m.media-amazon.com/images/I/71931KGxsHL._UF1000,1000_QL80_.jpg">
+                        <p>Parade of Horribles - Matt Dinniman</p>
+                    </div>
+                    <div class="books">
+                        <img class="cover" src="https://m.media-amazon.com/images/I/71hhTWQYT6L._UF1000,1000_QL80_.jpg">
+                        <p>Yesteryear - Caro Claire Burke</p>
+                    </div>
+                    <div class="books">
+                        <img class="cover" src="https://m.media-amazon.com/images/I/81EMjCVB-ML._AC_UF1000,1000_QL80_.jpg">
+                        <p>Perfect Storm - Carley Fortune</p>
+                    </div>
+                    <div class="books">
+                        <img class="cover" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWauWVdnZufKwCXhnaopvTkuoPHZgs5pXJAH05oCEFDwgY2O5bJ8J6UxAm&s=10">
+                        <p>Heart the Lover - Lily King</p>
+                    </div>
+                    <div class="books">
+                        <img class="cover" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkcQVR1rcCVRbAkarVtr_NqpaxX_G4B_R4krHjVbPaxw&s=10">
+                        <p>The Deal - Elle Kennedy</p>
+                    </div>
+                    <div class="books">
+                        <img class="cover" src="https://m.media-amazon.com/images/I/71psNIr2RZL._UF1000,1000_QL80_.jpg">
+                        <p>Liar's Kingdom - Andrew Weissmann</p>
+                    </div>
+                    <div class="books">
+                        <img class="cover" src="https://m.media-amazon.com/images/I/81X7rAcaQkL._AC_UF1000,1000_QL80_.jpg">
+                        <p>Remarkably Bright Creatures - Shelby Van Pelt</p>
+                    </div>
+                    <div class="books">
+                        <img class="cover" src="https://m.media-amazon.com/images/I/81JJPDNlxSL._AC_UF1000,1000_QL80_.jpg">
+                        <p>The Silent Patient - Alex Michaelides</p>
+                    </div>
+                </div>
+            </div>
+
+    <div class="trend">Choose Language</div>
+    <div class="scroll">
+            <div class="language-container">
+                <div class="language-card">English</div>
+                <div class="language-card">Punjabi</div>
+                <div class="language-card">Hindi</div>
+                <div class="language-card">Urdu</div>
+                <div class="language-card">Bengali</div>
+                <div class="language-card">French</div>
+                <div class="language-card">Persian</div>
+                <div class="language-card">Arbics</div>
+                <div class="language-card">English</div>
+                <div class="language-card">Punjabi</div>
+                <div class="language-card">Hindi</div>
+                <div class="language-card">Urdu</div>
+                <div class="language-card"><a href="Languages.html" style="text-decoration: none; color: white;">More +</a></div>
+            </div>
+        </div>
+            <div class="trend">Pick Your Poison</div>
+            <div class="scroll">
+              <div class="genre-container">
+                <div class="genre-card">
+                    <img class="cover" src="c:\Users\HP\Downloads\Jun 26, 2026, 11_34_12 PM.png" alt="Poetry">
+                </div>
+                <div class="genre-card">
+                    <img class="cover" src="c:\Users\HP\Downloads\ChatGPT Image Jun 26, 2026, 11_44_50 PM.png" alt="Fiction">
+                </div>
+                <div class="genre-card">
+                    <img class="cover" src="c:\Users\HP\Downloads\ChatGPT Image Jun 26, 2026, 11_54_46 PM.png" alt="Non-Fiction">
+                </div>
+                <div class="genre-card">
+                    <img class="cover" src="c:\Users\HP\Downloads\ChatGPT Image Jun 26, 2026, 09_37_25 PM.png" alt="Thriller">
+                </div>
+                <div class="genre-card">
+                    <img class="cover" src="c:\Users\HP\Downloads\ChatGPT Image Jun 26, 2026, 09_37_25 PM.png" alt="Horror">
+                </div>
+                <div class="genre-card">
+                    <img class="cover" src="c:\Users\HP\Downloads\ChatGPT Image Jun 26, 2026, 09_37_25 PM.png" alt="Horror">
+                </div>
+                <a style="text-decoration: none;" href="Genres.html">
+                <div class="genre-card" style="display: flex; justify-content: center; align-items: center; font-size: 20px;">
+                    <p style="color: white">More +</p>
+                </div></a>
+              </div>
+            </div>
+    <!--Featured-->
+    <div class="trend">Featured Writers</div>
+    <!--Featured Books in Featured-->
+            <div class="scroll">
+                <div class="name-author">
+                    <div class="category-author">
+                        <p>William Shakespeare</p>
+                        <div class="author">
+                            <div class="author-books">
+                                <img class="cover" src="https://m.media-amazon.com/images/I/81cORX7CxYL._AC_UF1000,1000_QL80_.jpg"> 
+                            </div>
+                            <div class="author-books">
+                                <img class="cover" src="https://m.media-amazon.com/images/I/41iqdZoGwjL._AC_UF1000,1000_QL80_.jpg">
+                            </div>
+                            <div class="author-books">
+                                <img class="cover" src="https://m.media-amazon.com/images/I/51B6Ipm83zL._AC_UF1000,1000_QL80_.jpg">
+                            </div>
+                            <div class="author-books">
+                                <img class="cover" src="https://m.media-amazon.com/images/I/81xjdJqxMtL._AC_UF1000,1000_QL80_.jpg">
+                            </div>
+                        </div>                
+                    </div>
+                    <div class="category-author">
+                        <p>Charlotte Brontë</p>
+                        <div class="author">
+                            <div class="author-books">
+                                <img class="cover" src="https://m.media-amazon.com/images/I/91zU70Aw9IS._AC_UF1000,1000_QL80_.jpg"> 
+                            </div>
+                            <div class="author-books">
+                                <img class="cover" src="https://m.media-amazon.com/images/I/81GftTTy8WL._AC_UF1000,1000_QL80_.jpg">
+                            </div>
+                            <div class="author-books">
+                                <img class="cover" src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1382652237i/46769.jpg">
+                            </div>
+                            <div class="author-books">
+                                <img class="cover" src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1220194504i/31175.jpg">
+                            </div>
+                        </div>                
+                    </div>
+                    <div class="category-author">
+                        <p>Fyodor Dostoyevsky</p>
+                        <div class="author">
+                            <div class="author-books">
+                                <img class="cover" src="https://m.media-amazon.com/images/I/71A4LeITQhL._AC_UF1000,1000_QL80_.jpg"> 
+                            </div>
+                            <div class="author-books">
+                                <img class="cover" src="https://m.media-amazon.com/images/I/51rWcasqejL._AC_UF1000,1000_QL80_.jpg">
+                            </div>
+                            <div class="author-books">
+                                <img class="cover" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZylJw38B1feOjaeXxw0ugt4c5hQWlb1izOg&s">
+                            </div>
+                            <div class="author-books">
+                                <img class="cover" src="https://m.media-amazon.com/images/I/81wsjvC2wKL._AC_UF1000,1000_QL80_.jpg">
+                            </div>
+                        </div>                
+                    </div>
+                    <div class="category-author">
+                        <p>George Orwell</p>
+                        <div class="author">
+                            <div class="author-books">
+                                <img class="cover" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBSSNbkNRcE2nwjPO6jbXc_JaF6ynVGC6zJA&s"> 
+                            </div>
+                            <div class="author-books">
+                                <img class="cover" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4FY87yYoGai9D8W7Ce0_hqDUCHdh0pr8Ckg&s">
+                            </div>
+                            <div class="author-books">
+                                <img class="cover" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcTa9AiYZgqOj7Q2t798c2nMICHsxTI_2uFQ&s">
+                            </div>
+                            <div class="author-books">
+                                <img class="cover" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-YfAFhEI74QzBBSrFHPKmOSpX0A_N-NsNa-w9VIIkEBckET_BNAY8DT58UBySZ-prFpn1JjB-By8EuPr8p89ZfbuxY0l4GT8P9Zf0_Es&s=10">
+                            </div>
+                        </div>                
+                    </div>
+                    <div class="category-author">
+                        <p>Jane Austen</p>
+                        <div class="author">
+                            <div class="author-books">
+                                <img class="cover" src="data:image/jpeg;base64,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"> 
+                            </div>
+                            <div class="author-books">
+                                <img class="cover" src="https://m.media-amazon.com/images/I/81inTOHSS8L._UF1000,1000_QL80_.jpg">
+                            </div>
+                            <div class="author-books">
+                                <img class="cover" src="https://m.media-amazon.com/images/I/81yLHb+ru+L._AC_UF1000,1000_QL80_.jpg">
+                            </div>
+                            <div class="author-books">
+                                <img class="cover" src="https://m.media-amazon.com/images/I/81958fdlRnL.jpg">
+                            </div>
+                        </div>                
+                    </div>
+                    <div class="category-author">
+                        <p>Charles Dickens</p>
+                        <div class="author">
+                            <div class="author-books">
+                                <img class="cover" src="https://m.media-amazon.com/images/I/61WJOp1S0UL._AC_UF1000,1000_QL80_.jpg"> 
+                            </div>
+                            <div class="author-books">
+                                <img class="cover" src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1327868529i/18254.jpg">
+                            </div>
+                            <div class="author-books">
+                                <img class="cover" src="https://www.gutenberg.org/files/1400/1400-h/images/cover.jpg">
+                            </div>
+                            <div class="author-books">
+                                <img class="cover" src="https://m.media-amazon.com/images/I/61ATqKvqJXL._UF1000,1000_QL80_.jpg">
+                            </div>
+                        </div>                
+                    </div>
+                </div>
+            </div>
+    <!--Hindi-->
+    <div class="trend">Hindi Classics</div>
+    <!--Featured Books in Hindi-->
+            <div class="scroll">
+                <div class="category">
+                    <div class="books">
+                        <img class="cover" src="https://m.media-amazon.com/images/I/61SqBrWGb2L._AC_UF1000,1000_QL80_.jpg">
+                        <p>Godaan - Munshi Premchand</p>
+                    </div>
+                    <div class="books">
+                        <img class="cover" src="https://m.media-amazon.com/images/I/71hemS2gvNL._AC_UF1000,1000_QL80_.jpg">
+                        <p>Gunahon Ka Devta - Dharamvir Bharti</p>
+                    </div>
+                    <div class="books">
+                        <img class="cover" src="https://m.media-amazon.com/images/I/51ibyu0fX9L._UF1000,1000_QL80_.jpg">
+                        <p>Maila Aanchal - Phanishwar Nath Renu</p>
+                    </div>
+                    <div class="books">
+                        <img class="cover" src="https://m.media-amazon.com/images/I/91GrI22k-7L._AC_UF1000,1000_QL80_.jpg">
+                        <p>Pinjar - Amrita Pritam</p>
+                    </div>
+                    <div class="books">
+                        <img class="cover" src="https://m.media-amazon.com/images/I/51-2KnwmBEL._AC_UF1000,1000_QL80_.jpg">
+                        <p>Raag Darbari - Srilal Shukla</p>
+                    </div>
+                    <div class="books">
+                        <img class="cover" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiEVpLMaXp40x5Pfx0lTwJQrz4Ez96JVEWfg&s">
+                        <p>Aapka Bunty - Mannu Bhandari</p>
+                    </div>
+                    <div class="books">
+                        <img class="cover" src="https://m.media-amazon.com/images/I/31PnkxYVqEL._AC_UF1000,1000_QL80_.jpg">
+                        <p>Tamas - Bhisham Sahni</p>
+                    </div>
+                    <div class="books">
+                        <img class="cover" src="https://m.media-amazon.com/images/I/51w4ZuX4M4L._AC_UF1000,1000_QL80_.jpg">
+                        <p>Madhushala - Harivansh Rai Bachchan</p>
+                    </div>
+                    <div class="books">
+                        <img class="cover" src="https://m.media-amazon.com/images/I/7111Uk6aXmL._AC_UF1000,1000_QL80_.jpg">
+                        <p>Rashmirathi -Ramdhari Singh 'Dinkar'</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- recent updates commented out -->
+        <!-- <div class="right">
+            <div class="trend" style="margin-left: 0px;">Recent Activity</div>
+            <div class="updates">
+                <p>New Uploads</p>
+                <p>Updates</p>
+            </div>
+        </div> -->
+    </div>
+</main>
+       <footer>
+    <div class="footer-left">
+        <p>&copy; 2026 The Three Musketeers Co.<br>All rights reserved.</p>
+    </div>
+
+    <div class="footer-center">
+        <nav>
+            <a href="about.html">About</a>
+            <a href="/privacy">Privacy Policy</a>
+            <a href="/terms">Terms of Service</a>
+            <a href="Feedback.html">Feedback</a>
+        </nav>
+
+        <div class="social-links">
+            <a href="https://instagram.com" target="_blank">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://facebook.com" target="_blank">
+                <i class="fa-brands fa-facebook"></i>
+            </a>
+            <a href="https://x.com" target="_blank">
+                <i class="fa-brands fa-x-twitter"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="footer-right">
+        <h3>Contact Us</h3>
+        <p>Email: support@inklings.com</p>
+        <p>Phone: +91 98765 43210</p>
+    </div>
+</footer>
+<script src="script.js" ></script>
+    </body>
+</html>

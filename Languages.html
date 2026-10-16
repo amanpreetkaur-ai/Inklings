@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Languages</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="Languages.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!--Font CDN Link-->
+        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+<!--Nav Bar-->
+    <nav class="navbar">
+        <div class="nav-links">
+            <button style="background-color: transparent; border: none; outline: none;" class="menu-toggle" id="menuToggle" aria-label="Open Navigation"><a><i class="fa-solid fa-bars"></i></a></button>
+
+                <!-- Slide-out Navigation Panel Layer -->
+            <div class="nav-overlay" id="navOverlay"></div>
+            <div class="side-drawer" id="sideDrawer">
+                <div class="drawer-header">
+                    <h2>Chapters</h2>
+                        <!-- Close Button -->
+                    <button class="close-btn" id="closeBtn">✕</button>
+                </div>
+                    
+                <!-- Navigation Links -->
+                <ul class="drawer-links">
+                    <li><a href="Exclusives.html"><i class="fa-solid fa-bomb"></i>-Inklings Exclusives</a></li>
+                    <li><a href="Genres.html"><i class="fa-solid fa-book"></i>-Genres</a></li>
+                    <li><a href="Languages.html"><i class="fa-solid fa-language"></i>-Languages</a></li>
+                    <li><a href="personal-details.html"><i class="fa-solid fa-pen"></i>-Write</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="logo"><a style="text-decoration: none; color: white;" href="Index.html">Inklings</a></div>
+        <ul class="nav-links">
+            <li><a><i class="fa-regular fa-heart"></i></a></li>
+            <li>
+                <a href="#" onclick="toggleSearch(event)">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                </a>
+            </li>
+            <div id="search-panel">
+                <input type="text" placeholder="Search books...">
+            </div>
+            <li><a href="registration.html"><i class="signup"></i>Signup</a></li>
+        </ul>
+    </nav>
+    <div class="liquid-bg"></div>
+    <div class="trends">Languages</div>
+    <main>
+            <div class="language-container">
+                <div class="single-language">
+                    <span class="language-title">ASIAN</span>
+                    <div class="language-glass">
+                        <div class="sub-languages">
+                            <div class="mini-box delay-1 tint-red">
+                                <div class="icon-flip">
+                                    <i class="icon-front"></i>
+                                    <i class="icon-back">文</i> 
+                                </div>
+                                <span class="box-text">Chinese</span>
+                            </div>
+                            <div class="mini-box delay-2 tint-blue">
+                                <div class="icon-flip">
+                                    <i class="icon-front"></i>
+                                    <i class="icon-back">अ</i>
+                                </div>
+                                <span class="box-text">Hindi</span>
+                            </div>
+                            <div class="mini-box delay-3 tint-black">
+                                <div class="icon-flip">
+                                    <i class="icon-front"></i>
+                                    <i class="icon-back">ع</i>
+                                </div>
+                                <span class="box-text">Arabic</span>
+                            </div>
+                            <div class="mini-box delay-4 tint-golden">
+                                <div class="icon-flip">
+                                    <i class="icon-front"></i>
+                                    <i class="icon-back">ੳ</i>
+                                </div>
+                                <span class="box-text">Punjabi</span>
+                            </div>
+                            <div class="mini-box delay-5 tint-metal">
+                                <div class="icon-flip">
+                                    <i class="icon-front"></i>
+                                    <i class="icon-back">あ</i>
+                                </div>
+                                <span class="box-text">Japanese</span>
+                            </div>
+                            <div class="mini-box delay-6 tint-neon">
+                                <div class="icon-flip">
+                                    <i class="icon-front"></i>
+                                    <i class="fa-solid fa-plus icon-back"></i>
+                                </div>
+                                <span class="box-text">More</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="single-language">
+                    <span class="language-title">WESTERN</span>
+                    <div class="language-glass">
+                        <div class="sub-languages">
+                            <div class="mini-box delay-1 tint-red">
+                                <div class="icon-flip">
+                                    <i class="icon-front"></i>
+                                    <i class="icon-back">E</i> 
+                                </div>
+                                <span class="box-text">English</span>
+                            </div>
+                            <div class="mini-box delay-2 tint-blue">
+                                <div class="icon-flip">
+                                    <i class="icon-front"></i>
+                                    <i class="icon-back">FR</i>
+                                </div>
+                                <span class="box-text">French</span>
+                            </div>
+                            <div class="mini-box delay-3 tint-black">
+                                <div class="icon-flip">
+                                    <i class="icon-front"></i>
+                                    <i class="icon-back">DE</i>
+                                </div>
+                                <span class="box-text">German</span>
+                            </div>
+                            <div class="mini-box delay-4 tint-golden">
+                                <div class="icon-flip">
+                                    <i class="icon-front"></i>
+                                    <i class="icon-back">IT</i>
+                                </div>
+                                <span class="box-text">Italian</span>
+                            </div>
+                            <div class="mini-box delay-5 tint-metal">
+                                <div class="icon-flip">
+                                    <i class="icon-front"></i>
+                                    <i class="icon-back">Я</i>
+                                </div>
+                                <span class="box-text">Russian</span>
+                            </div>
+                            <div class="mini-box delay-6 tint-neon">
+                                <div class="icon-flip">
+                                    <i class="icon-front"></i>
+                                    <i class="fa-solid fa-plus icon-back"></i>
+                                </div>
+                                <span class="box-text">More</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="single-language">
+                    <span class="language-title">CLASSICAL</span>
+                    <div class="language-glass">
+                        <div class="sub-languages">
+                            <div class="mini-box delay-1 tint-red">
+                                <div class="icon-flip">
+                                    <i class="icon-front"></i>
+                                    <i class="icon-back">ॐ</i> 
+                                </div>
+                                <span class="box-text">Sanskrit</span>
+                            </div>
+                            <div class="mini-box delay-2 tint-blue">
+                                <div class="icon-flip">
+                                    <i class="icon-front"></i>
+                                    <i class="icon-back">LA</i>
+                                </div>
+                                <span class="box-text">Latin</span>
+                            </div>
+                            <div class="mini-box delay-3 tint-black">
+                                <div class="icon-flip">
+                                    <i class="icon-front"></i>
+                                    <i class="icon-back">α</i>
+                                </div>
+                                <span class="box-text">Greek</span>
+                            </div>
+                            <div class="mini-box delay-4 tint-golden">
+                                <div class="icon-flip">
+                                    <i class="icon-front"></i>
+                                    <i class="icon-back">ע</i>
+                                </div>
+                                <span class="box-text">Hebrew</span>
+                            </div>
+                            <div class="mini-box delay-5 tint-metal">
+                                <div class="icon-flip">
+                                    <i class="icon-front"></i>
+                                    <i class="fa-solid fa-plus icon-back"></i>
+                                </div>
+                                <span class="box-text">More</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="single-language">
+                    <span class="language-title">INDIAN</span>
+                    <div class="language-glass">
+                        <div class="sub-languages">
+                            <div class="mini-box delay-1 tint-red">
+                                <div class="icon-flip">
+                                    <i class="icon-front"></i>
+                                    <i class="icon-back">ॐ</i> 
+                                </div>
+                                <span class="box-text">Sanskrit</span>
+                            </div>
+                            <div class="mini-box delay-2 tint-blue">
+                                <div class="icon-flip">
+                                    <i class="icon-front"></i>
+                                    <i class="icon-back">अ</i>
+                                </div>
+                                <span class="box-text">Hindi</span>
+                            </div>
+                            <div class="mini-box delay-3 tint-black">
+                                <div class="icon-flip">
+                                    <i class="icon-front"></i>
+                                    <i class="icon-back">அ</i>
+                                </div>
+                                <span class="box-text">Tamil</span>
+                            </div>
+                            <div class="mini-box delay-4 tint-golden">
+                                <div class="icon-flip">
+                                    <i class="icon-front"></i>
+                                    <i class="icon-back">اردو</i>
+                                </div>
+                                <span class="box-text">Urdu</span>
+                            </div>
+                            <div class="mini-box delay-5 tint-metal">
+                                <div class="icon-flip">
+                                    <i class="icon-front"></i>
+                                    <i class="icon-back">অ</i>
+                                </div>
+                                <span class="box-text">Bengali</span>
+                            </div>
+                            <div class="mini-box delay-6 tint-neon">
+                                <div class="icon-flip">
+                                    <i class="icon-front"></i>
+                                    <i class="fa-solid fa-plus icon-back"></i>
+                                </div>
+                                <span class="box-text">More</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="single-language random-layout">
+                    <span class="language-title">ALL</span>
+                    <div class="language-glass">
+                        <div class="sub-languages">
+                            <div class="mini-box delay-1 tint-red">
+                                <div class="icon-flip">
+                                    <i class="icon-front"></i>
+                                    <i class="fa-solid fa-language icon-back"></i> 
+                                </div>
+                                <span class="box-text">Browse All</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="single-language random-layout">
+                    <span class="language-title">Happy Reading</span>
+                    <div class="language-glass">
+                        <div class="sub-languages">
+                            <div style="font-family: system-us, sans-serif; justify-content: center; align-items: center; text-align: center;" class="mini-box delay-1 tint-red">
+                                <i>(*^_^*)</i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </main>
+       <footer>
+    <div class="footer-left">
+        <p>&copy; 2026 The Three Musketeers Co.<br>All rights reserved.</p>
+    </div>
+
+    <div class="footer-center">
+        <nav>
+            <a href="about.html">About</a>
+            <a href="/privacy">Privacy Policy</a>
+            <a href="/terms">Terms of Service</a>
+            <a href="Feedback.html">Feedback</a>
+        </nav>
+
+        <div class="social-links">
+            <a href="https://instagram.com" target="_blank">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://facebook.com" target="_blank">
+                <i class="fa-brands fa-facebook"></i>
+            </a>
+            <a href="https://x.com" target="_blank">
+                <i class="fa-brands fa-x-twitter"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="footer-right">
+        <h3>Contact Us</h3>
+        <p>Email: support@inklings.com</p>
+        <p>Phone: +91 98765 43210</p>
+    </div>
+</footer>
+        <script src="script.js" async defer></script>
+    </body>
+</html>

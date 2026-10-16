@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>About</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="about.css">
+        <!-- Icons CDN Link -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!--Font CDN Link-->
+        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+        <!-- For the main heading -->
+        <style>
+            h1{
+                background-color: #376688ca;
+                text-align: center;
+                margin-top: 20px;
+                color: white;
+                display: flex;
+                justify-content: center;
+            }
+        </style>
+    </head>
+<body>
+
+    <div class="nav-overlay" id="navOverlay"></div>
+    <div class="side-drawer" id="sideDrawer">
+        <div class="drawer-header">
+            <h2>Chapters</h2>
+            <button class="close-btn" id="closeBtn">✕</button>
+        </div>
+        <ul class="drawer-links">
+            <li><a href="Exclusives.html"><i class="fa-solid fa-bomb"></i>-Inklings Exclusives</a></li>
+            <li><a href="Genres.html"><i class="fa-solid fa-book"></i>-Genres</a></li>
+            <li><a href="Languages.html"><i class="fa-solid fa-language"></i>-Languages</a></li>
+            <li><a href="personal-details.html"><i class="fa-solid fa-pen"></i>-Write</a></li>
+        </ul>
+    </div>
+
+    <!-- Search Panel moved OUTSIDE the navbar to fix the overlap -->
+    <div id="search-panel">
+        <input type="text" placeholder="Search books...">
+    </div>
+
+
+    <!-- 2. NAVBAR -->
+    <nav class="navbar">
+        <!-- Hamburger Menu restored -->
+        <div class="nav-links">
+            <button style="background-color: transparent; border: none; outline: none; cursor: pointer;" class="menu-toggle" id="menuToggle" aria-label="Open Navigation">
+                <i style="color: white; font-size: 20px;" class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+        
+        <div class="logo"><a style="text-decoration: none; color: white;" href="Index.html">Inklings</a></div>
+        
+        <ul class="nav-links">
+            <li><a><i class="fa-regular fa-heart"></i></a></li>
+            <li>
+                <a href="#" onclick="toggleSearch(event)">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </a>
+            </li>
+            <!-- Note: Search panel was removed from here -->
+            <li><a href="registration.html"><i class="signup"></i>Signup</a></li>
+        </ul>
+    </nav>
+
+    <!-- Background and Main Content -->
+    <div class="liquid-bg"></div>
+        <main>
+            <h1>About</h1>
+            <div class="about">
+                <div class="about-body">
+                    <p class="heading">Conception</p>
+                    <p class="para">The idea stemmed as a semester project. A copy of webtoon, the platform for mangas and manhwas. The plan was laid out during a hangout. Looking at a menu, the basics were discussed. It was whimsical 
+                        but it was doable. So we started to do it. Without any knowledge of how to actually develop stuff. One manager and  two developers set out to do it. It is still a work in progress. But it'll surely be completed.
+                    </p>
+                </div>
+                <div class="about-body">
+                    <p class="heading">The Aim</p>
+                    <p class="para">The aim was simple. Building a community of people tthat share the same interests as others on this plaform. From pages to screens, and writers to accounts, an environment that knows deeper meanings to life.
+                         As Keating from DPS said, <i>We don't read and write poetry because it's cute. We read and write poetry because we are members of the human race. And the human race is filled with passion.</i> Lets keep the passion alive.
+                    </p>
+                </div>
+            </div>
+            <h1>Developers</h1>
+            <div class="developers">
+                <div class="dev-prof">
+                    <p class="heading">Amanpreet Kaur</p>
+                    <div class="data">
+                        <img style="margin-top: 10px;" src="data:image/png;base64,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" alt="">
+                        <p class="para">A student currently pursuing B.Tech. She is a girl that is ready for learning 
+                            with a positive attitude that lights up the enviromnent. Sometimes moody but she doesn't let it hinder the process of learning.
+                        </p>
+                    </div>
+                </div>
+                <div class="dev-prof">
+                    <p class="heading">Damanpreet Kaur</p>
+                    <div class="data">
+                        <img style="margin-top: 10px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAaVBMVEXb29v///+goKD08/F8fHzx8O7r6+vq6ef6+vp0dHTw8PDc3Nzu7evn5uSdnZ3k4+HU1NLPz83JycmkpKTDw8O1tbWtra2/v7+4uLjX19SQkJCFhYWfnpyXl5fMzMqqqaeKioqAf31tbW1vfqxzAAAMCUlEQVR4nO2dbZuqOAyGWRFFK+Ud1BE4s///R27BN0BpkzZFPetz7Zc5M0u5bZsmaVqdf/52Oa9+Aev6En6+voSfr/8fof/5UhCunE/X6kv46hc01pfwS/j++hJ+Cd9fX8Iv4fvrNYRsJIdZaabT/IQdUVQnWadEqI6jKzN5a7MTCoi4zFP+qEWT77PYoaeck1C8fJJ3NM90Bk3zLKKlnI+wxVtM0A1B07x26CBnImQsKlMl3Z0yLSMqxlkIBd9+Aea7QBYxDeMchMzB8l0YIwpE+4SMZerZNwG5J1gorROyuNHkaxHT2tgbsEzInFKfr2MsTXvRLiGLCjNAgVi8MyFLNCzMg5p3JRQTyHCEXsRTo6losQ/ZngRQIDYmiNYIGcuJALu5qL/62yOkA2wXRv1OtETIyIboBTF7tz4UfgwloEDUnop2CFlCDCjWjLciZE5KDajv3NghpLQyN2lGGjYILYxRIZ6/ESH9GO0QYy1EC4REztojYa617NMTMscOoG4nWiDMLQFqzkR6wsgWoEDUMafkhMTu2pBQxz0lJ7TYhUJvQGjLkJ7FEzwiMaENf62v4vWEVtyZnvC2hpqwsAso4kQsIi0hiyx3IccPU2JCq3amFT7vRkxoamfU24toa0pKyGLDLuSl8i/QnhstoaE/w/OtchCkSEBiQrNBytOdvz+p/gi7XlASmg5SHrruQfUIdF6RlNDMklbMd11XNQzQE5GU0Gi5547bSploTV9HyMzCijOgu1IOU+REpCQ08En5gp0BXV9lj7ErIiWhfvqCp4F/IVR2IjYMppyHjTZg4bk3+aV8wcC6pnSE+tOQl25fO8WSyF/Wh3rTkPNF5A8I3Vr+oApnagj7UM9l40UwAnQ9+XBHmhrCPtRZDU+nzH2UPKeM3IUiJNQA5E34BFAYGykiztSQEWo4pbx61oGt5CEGzquhI0Q7pU9m4E1hJfs/UXE+HSFyvedpPIWntKeoHRo6QlRsyBfZVgboupJtZJwxpSJE7alxvg98BeF2umgaZ0zJCBGG5pQ/taAjBacp3wYXIpIRQgtoOAfxubJVEVV5QkYI82havkkDOpI/nV5GANIRQgILvijFAqGYgD3ESYOKMaZkhCq60+nU1Dso3EXZ86mIMqZEhMoNCzE8HSReq+duBMqYUhFKQyfO02StwSf0fPBjPFMqwv6HPTxeIX4qwdblQYwPHnX5CZP4piK8uyC8Ke9HZNoTTDqj86Z+YorvnUvtPybfRkV4H03C3fR3l/dqSga2nBPqJabajLHfTQeMqaGypbfXcM4Dsu1TXrrao/Oqrb+/9iDzt0J+61pgvBoawlsWil8DBi9ttxhM+VqF5xWDJ9d/aF18RPU+EeHFlPLi1mli+bi/lIn88wQYPBkzEYkIL14pd/ovRkN4DhWrnjNboXagiAgvppT3XiziRIRBN/Hu0ZafoiYiEeElz5b2LQtVH7YTr9+FfpdNmJnwWgmV9wmziohQLD1F78fOusJrTUkIr6aUDwjDSpqJgSvhvP8kv1hg9mdoCK9eaTFY/+S5JrhEKNzbuenmISKlSEN480oHhCURYVDtBz9XKMeNhvDqlVaDAPBQ0xDuqoFre3bGwREUDeE1k8ij/qusI5dEXjP44C4DBpqsoSC8h79DU+MBU05KwqH3d/WAgcOUhLAX/g4+bc8lkRf0f7p+nFC3hoTwHsOdiJZAiW5xGjDQJyHs7RymRP02qeienIrmImT9nUOeGIeEMm17+27AYUpBOMxCrWwS+v3UOmyYUhAO0t08t0k4SEzB6oUpCIf7ary2N069YUugbI054cO+WhWqds60NbwmBRYkEhA+JoNtTcV8lOQHDVMCwsfMe2oF0cvHO4qgIJGA8PGClrYQj3igbt3Vk3Yg3jcB4bjdTg6xufGdZ7vekPXCmHBi12lUjWeq8HnhAlcDEhBO7DrxE3q3cBKvbKbu6QOsF+aEk5VCnBcFU7+/WtOFJ5BsjTmh7P6E055gOnqSBgBhsDmhbAP/dCIINaR1LDMQyg+NcvNklC/7CAErojGhovY5NRym26Gz/UCojqBMCZmiZJkb7QC7qtMJAFNjTKio7jYOpgL589VrvjGhqqyUmyXcFOXCgNS3MaHyiItZJwbypwPCC2NCZeHsyWjVV5bLxdb7UFmhf2oMAEPlOa/aeh+qzyDor4lbV/l0tWdqvB4Cip+5bkDsq4/hqBfEOQhH24pwKc8iQoLgWQh102+A613fhLCtZ9IAhJzgsE4Iva1FJzcVqw6uz0MYwQgHZyhhYpO1+rMSAkephmsTAp/7NoSj7WGlVN7a7bHvsVrgEQPICH03QsxchM3B7qHWfRrMPQq82MIy4ZijjMo0hv3YoqcmAQWLB8wxOOVWt/X4sK8iydQlNkGdIA72q6v2jQkxVyI3SZIputE7ZAmK0H6MH8PfpiVM6iySZPvD7tuREIT28zSoexLTOqmFkinG8Pz7GmGf1ftr5jlvhFm4EArGwyOjF9ZXIQjVWzN29y0eCO86BIPVccfi629iDKG6asicEGFq0jq+SZAcwrXXahewqPebOEYMizl2ZhDLcxrDBPcEAZvAtna5ZyIEFH4REMK9mjSOIEIQAmpMrdTTzEYIOXVBUfVFTgh9HqgoioIQHF6QE0IK2ygIwetFGjvRQS24IzhP1dewglau2AEAwglnqtwTArs1ESnhXNWXCGt6gozRwwF6GTHsRDfN2TWgeT+B+hAargAPdxGfe5KrOYA+L2AWA3hAj/R0nkrF+JuOJwRafqC3C9KeklW8UxaCAEPQ8gM9k09EqKiqOSt1YISw7R7oAUSqOxUAA4snIVSATgSf5p7lbpPzK+VgwDAE7I3OeobUAaRrTg0CMAxVX88KP5BPRqiq/ipQgMpehN8sONONdLxEAoYTld3oLiQklFgHntYBmjCU3baL+PZVwts9pzqRiw7UAAyDaHIyvuJ+mqmZyLlwHwNd1U31rEofdeke5W3XD50o8PIkXGkDCjlZwfkDJeYmYZs3lvM8Wq/XJnxC4glhlA0sK+7LA6zdq8+PP8vYFO+GGSx/jhVfnEfJi27ZdW7p77Sl+10ul5t6TSVn2UpQLtIU+Y1ItN/gkS9SXv35XZ61SXZUhPHm8kxBmYeob0QitKWi3fJG1xFmZITlpvfcn0UZtVHKjISsxUuKY/81WsI9FeGuWY4e/ZNmDgySJBMlOo8vR3itCo+I0Ds+PnyzOeYRAJJg34Ili2d4QgtvR6H1Lvh5+vzlpirt1+qzbDw47zqSAArCw1QLYrjmCkYzQimfMAlrIsJS0sjmt5AOVSNCFlWSpkXjIc0wdU+yVkQ/yr5Rz4SQ5VK+dsknIdyuJqbhvSHJd17oE6o6sG04pyGMVA0JTfqq2oQsUX2wQkcawkLd0nIzdWBWl5CVgFaXGwrAnXKQntuqSAnZHjBwWs90u/UMtfMSUFtixDxdN/QIgYBizXeNCT23grW1XP55hqhFyGTr00Ab8z70QmhjzxF1CFkCblIMU+MuHHvdsuaOJIQsAs38s46uKWEA70KBmIYUhOB50TbpGCK6KYZQRGzjXsQTgq3MWdyM0GWo1oTGO8NoQubgmtw4JsbG3T6JDOUaT0U8IWaMdi0aEeIGTKvNKF2MJoQuv/cWS4OLIxwsX6vIiJChR81yqX9cfY2w2ncNd96QhAzdhUI/uoD4SdhpMwilsITYWdip0iRUhmcTWugTslirxY0WoidLkMjb6ztvSMJCr9FNhT4H7Id/NPmEGm1CR2vmt4g/46/iVCnT51suf3UJtezMlbHZwRl9pjsFL431cho4QoSb/9jqbw5k9A/y3BpAPNQkNJgaLeOGJyv/LFf8dzlRejlX2v5TK7b/Meq/Tr/3BQNDyCA5LxXkT7ovsyyJI4eFq9VKeGarVRAyJ6qTrNwXlfgTY77BMEURgkN7eet9PfxIpFSP0GQazqw/eoR6TtRrdJuIGMLw1W+N0H0iIgixse9rVegQ1p9EyHUIs08iPGpYGmQK6sX60SGEbAG9j64R1F9LeAv0MYQftOC3+wkahOmr3xqj24KI6sPNB+nfDGhp/J7c7Sfp9toKwr9PX8LP15fw8/Ul/Hz9B/oqBuPvxiJnAAAAAElFTkSuQmCC" alt="">
+                        <p class="para">A Lawyer who likes tech and IT. It was her idea to build a platform like this.
+                            Being a fan of reading, she thought of a platform for the cozy souls that tread the web.
+                            She thought of the community that helps nurture itself.
+                        </p>
+                    </div>
+                </div>
+                <div class="dev-prof">
+                    <p class="heading">Dinker Dev</p>
+                    <div class="data">
+                        <img style="margin-top: 10px;" src="data:image/png;base64,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" alt="">    
+                        <p class="para">A B.Tech graduate in Computer Science and Engineerig currently pursuing MBA. He's a guy who is curious and it helps him learn more.
+                            Sometimes moody but he gets the work done in the best way possible.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h1>Thank You</h1>
+                <p style="text-align: center; margin: 20px; font-size: large; color: white;">
+                    Thank You for visiting the site and being interested in the background of the project.
+                </p>
+            </div>   
+            <footer>
+                <div><p>&copy; 2026 The Three Musketeers Co.<br>All rights reserved.</p></div>
+            </footer>
+        </main>
+        <script src="script.js"></script>
+    </body>
+</html>

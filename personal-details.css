@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* =========================
+        NAVBAR
+========================= */
+
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+    /* Sticky Positioning */
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    
+    /* Glassmorphism */
+    background: rgba(15, 50, 75, 0.4);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.0);
+    transform: translate3d(0, 0, 0); /* Glitch prevention */
+    
+    padding: 15px 30px;
+    color: white;
+}
+.liquid-bg{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background: linear-gradient(45deg, #85858589, #9996b7, #2f2f65, #0f324bca);
+  background-size: 400% 400%;
+  overflow: hidden;
+  animation: gradientFlow 10s ease infinite;
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes infiniteSweep {
+  0% { left: -150%; }
+  23% { left: 150%; }  
+  100% { left: 150%; } 
+}
+
+.liquid-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.0) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  z-index: 1;
+  pointer-events: none;
+  
+  /* Replace your old animation line with this one: */
+  animation: infiniteSweep 5s cubic-bezier(0.2, 0, 0.2, 1) infinite;
+}
+
+.logo {
+    font-size: 35px;
+    font-family: "Dancing Script", cursive;
+}
+
+/* =========================
+        MAIN
+========================= */
+
+main {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+    background-size: cover;
+    background-position: center;
+}
+
+/* =========================
+        FORM BOX
+========================= */
+
+.personal-details {
+    width: 500px;
+    max-width: 95%;
+    padding: 35px;
+
+    /* Glassmorphism */
+    background: rgba(15, 50, 75, 0.25); /* Darker tint for contrast */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    
+    /* Glass Borders & Shadow */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.0);
+    border-left: 1px solid rgba(255, 255, 255, 0.0);
+    border-radius: 30px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    
+    transform: translate3d(0, 0, 0); /* Glitch prevention */
+}
+
+/* =========================
+        HEADING
+========================= */
+
+h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: white;
+    font-size: 3rem;
+    font-family: "Dancing Script", cursive;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Helps text pop against glass */
+}
+
+/* =========================
+        FORM
+========================= */
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+label {
+    color: white;
+    font-size: 22px;
+    font-family: "Dancing Script", cursive;
+    margin-left: 5px;
+}
+
+/* =========================
+      INPUTS & TEXTAREA
+========================= */
+
+input,
+textarea {
+    width: 100%;
+    padding: 12px 15px;
+    
+    /* Frosted Inputs */
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.0);
+    border-radius: 15px;
+    outline: none;
+    
+    color: white;
+    font-size: 18px;
+    font-family: "Dancing Script", cursive;
+    transition: 0.3s ease;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Neon-style glow on focus */
+input:focus,
+textarea:focus {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.0);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+/* Autofill fix to keep it matching the dark/glass theme */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px #224a66 inset !important;
+    -webkit-text-fill-color: white !important;
+    border-radius: 15px;
+}
+
+/* =========================
+        BUTTON
+========================= */
+
+button {
+    margin-top: 15px;
+    padding: 14px;
+    
+    /* Glass Button */
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.0);
+    border-radius: 20px;
+    
+    color: white;
+    font-size: 22px;
+    font-family: "Dancing Script", cursive;
+    font-weight: bold;
+    cursor: pointer;
+    
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================
+        FOOTER
+========================= */
+
+footer {
+    /* Glassmorphism */
+    background: rgba(15, 50, 75, 0.4);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-top: 1px solid rgba(255, 255, 255, 0.0);
+    
+    color: white;
+    text-align: center;
+    padding: 18px;
+    font-size: 22px;
+    font-family: "Dancing Script", cursive;
+}

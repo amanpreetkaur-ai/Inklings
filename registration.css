@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 1. Moved the background to the body so the navbar and footer can blur over it */
+body {
+    background-image: url(https://png.pngtree.com/thumb_back/fh260/background/20250205/pngtree-soft-pastel-floral-design-light-blue-background-image_16896113.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 2. Glass Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: rgba(15, 50, 75, 0.4); 
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.0);
+    padding: 15px 30px;
+    color: white;
+}
+
+.logo {
+    font-size: 35px;
+    font-weight: bold;
+    font-family: 'Dancing Script', cursive;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* 3. Main content area pushes the footer down */
+main {
+    flex: 1; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+/* 4. Enhanced Glass Container */
+.signup-container {
+    width: 420px;
+    padding: 35px;
+    background: rgba(255, 255, 255, 0.15); 
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.0); /* Simulates the glass edge */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2); /* Adds depth */
+}
+
+/* 5. Brightened Text for contrast against the glass */
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-family: "Dancing Script", cursive;
+    font-size: 3rem;
+    color: #ffffff; 
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+label {
+    color: #ffffff;
+    font-size: 20px;
+    font-family: "Dancing Script", cursive;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+/* 6. Inset Glass Form Inputs */
+input {
+    padding: 12px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.0); 
+    outline: none;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-size: 20px;
+    font-family: "Dancing Script", cursive;
+    transition: 0.3s;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+input:focus {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.0);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 50px #5c839f inset;
+    -webkit-text-fill-color: #fff;
+}
+
+/* 7. Frosted Glass Button */
+button {
+    margin-top: 15px;
+    padding: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.0); 
+    border-radius: 20px;
+    background: rgba(79, 118, 149, 0.6);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    font-family: "Dancing Script", cursive;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    transform: translateY(-2px);
+    background: rgba(106, 149, 182, 0.8);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* 8. Glass Footer */
+footer {
+    background: rgba(15, 50, 75, 0.4); 
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-top: 1px solid rgba(255, 255, 255, 0.0);
+    color: white;
+    font-family: "Dancing Script", cursive;
+    font-size: 20px;
+    text-align: center;
+    padding: 15px;
+}
+
+/* =======================
+    LIQUID BACKGROUND
+======================= */
+.liquid-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background: linear-gradient(45deg, #85858589, #9996b7, #2f2f65, #0f324bca);
+  background-size: 400% 400%;
+  overflow: hidden;
+  animation: gradientFlow 10s ease infinite;
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes infiniteSweep {
+  0% { left: -150%; }
+  23% { left: 150%; }  
+  100% { left: 150%; } 
+}
+
+.liquid-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  z-index: 1;
+  pointer-events: none;
+  animation: infiniteSweep 5s cubic-bezier(0.2, 0, 0.2, 1) infinite;
+}
