@@ -1,0 +1,334 @@
+// Inklings database schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  schemas  = ["public", "auth"]
+}
+
+// --------------------
+// ENUMS
+// --------------------
+
+enum UserRole {
+  READER
+  WRITER
+  ADMIN
+
+  @@schema("public")
+}
+
+enum StoryStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+
+  @@schema("public")
+}
+
+enum AuthorType {
+  FAMOUS_WRITER
+  POET
+  NOVELIST
+  INKLINGS_WRITER
+  OTHER
+
+  @@schema("public")
+}
+
+enum ProfileImageType {
+  PHOTO
+  AVATAR
+  ILLUSTRATION
+
+  @@schema("public")
+}
+
+enum BookStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+
+  @@schema("public")
+}
+
+enum ReadingAccess {
+  FULL_TEXT
+  PREVIEW
+  EXTERNAL_LINK
+  DETAILS_ONLY
+
+  @@schema("public")
+}
+
+enum CopyrightStatus {
+  PUBLIC_DOMAIN
+  LICENSED
+  PERMISSION_GRANTED
+  COPYRIGHTED
+  UNKNOWN
+
+  @@schema("public")
+}
+
+enum ContentSource {
+  ADMIN_CURATED
+  INKLINGS_COMMUNITY
+
+  @@schema("public")
+}
+
+// --------------------
+// USERS
+// --------------------
+
+model User {
+  id             String   @id @default(cuid())
+  supabaseUserId String   @unique
+  username       String   @unique
+  displayName    String
+  bio            String?  @db.Text
+  avatarUrl      String?
+  role           UserRole @default(READER)
+  isActive       Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  stories       Story[]
+  authorProfile Author?
+
+  @@schema("public")
+}
+
+// --------------------
+// STORIES
+// --------------------
+
+model Story {
+  id            String      @id @default(cuid())
+  title         String
+  slug          String      @unique
+  description   String?     @db.Text
+  content       String      @default("") @db.Text
+  coverImageUrl String?
+  status        StoryStatus @default(DRAFT)
+  publishedAt   DateTime?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  authorId String
+  author   User   @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  languageId String?
+  language   Language? @relation(fields: [languageId], references: [id], onDelete: SetNull)
+
+  genres        StoryGenre[]
+  featuredItems FeaturedItem[]
+
+  @@index([authorId, status])
+  @@index([languageId])
+  @@schema("public")
+}
+
+// --------------------
+// AUTHORS
+// --------------------
+
+model Author {
+  id              String           @id @default(cuid())
+  name            String
+  slug            String           @unique
+  penName         String?
+  biography       String?          @db.Text
+  profileImageUrl String?
+  imageType       ProfileImageType @default(AVATAR)
+  authorType      AuthorType       @default(OTHER)
+  isFeatured      Boolean          @default(false)
+  isActive        Boolean          @default(true)
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+
+  // Optional connection to an Inklings user account
+  userId String? @unique
+  user   User?   @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  books         BookAuthor[]
+  featuredItems FeaturedItem[]
+
+  @@index([authorType, isActive])
+  @@schema("public")
+}
+
+// --------------------
+// BOOKS
+// --------------------
+
+model Book {
+  id              String    @id @default(cuid())
+  title           String
+  slug            String    @unique
+  description     String?   @db.Text
+  coverImageUrl   String?
+  publisher       String?
+  publicationDate DateTime?
+
+  // Reading content and access
+  readingAccess ReadingAccess @default(DETAILS_ONLY)
+  fullText      String?       @db.Text
+  previewText   String?       @db.Text
+  externalUrl   String?
+
+  // Copyright and source information
+  copyrightStatus CopyrightStatus @default(UNKNOWN)
+  copyrightNotice String?         @db.Text
+  contentSource   ContentSource   @default(ADMIN_CURATED)
+
+  status     BookStatus @default(DRAFT)
+  isFeatured Boolean    @default(false)
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+
+  languageId String?
+  language   Language? @relation(fields: [languageId], references: [id], onDelete: SetNull)
+
+  authors       BookAuthor[]
+  genres        BookGenre[]
+  featuredItems FeaturedItem[]
+
+  @@index([status, isFeatured])
+  @@index([languageId])
+  @@index([contentSource])
+  @@schema("public")
+}
+
+// --------------------
+// LANGUAGES
+// --------------------
+
+model Language {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  slug      String   @unique
+  code      String?  @unique
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+
+  books   Book[]
+  stories Story[]
+
+  @@schema("public")
+}
+
+// --------------------
+// GENRES
+// --------------------
+
+model Genre {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  slug        String   @unique
+  description String?  @db.Text
+  isFeatured  Boolean  @default(false)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+
+  books   BookGenre[]
+  stories StoryGenre[]
+
+  @@schema("public")
+}
+
+// --------------------
+// BOOK-AUTHOR RELATION
+// --------------------
+
+model BookAuthor {
+  id       String @id @default(cuid())
+  bookId   String
+  authorId String
+
+  book   Book   @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  author Author @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  @@unique([bookId, authorId])
+  @@index([authorId])
+  @@schema("public")
+}
+
+// --------------------
+// BOOK-GENRE RELATION
+// --------------------
+
+model BookGenre {
+  id      String @id @default(cuid())
+  bookId  String
+  genreId String
+
+  book  Book  @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  genre Genre @relation(fields: [genreId], references: [id], onDelete: Cascade)
+
+  @@unique([bookId, genreId])
+  @@index([genreId])
+  @@schema("public")
+}
+
+// --------------------
+// STORY-GENRE RELATION
+// --------------------
+
+model StoryGenre {
+  id      String @id @default(cuid())
+  storyId String
+  genreId String
+
+  story Story @relation(fields: [storyId], references: [id], onDelete: Cascade)
+  genre Genre @relation(fields: [genreId], references: [id], onDelete: Cascade)
+
+  @@unique([storyId, genreId])
+  @@index([genreId])
+  @@schema("public")
+}
+
+// --------------------
+// HOMEPAGE FEATURED SECTIONS
+// --------------------
+
+model FeaturedSection {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  description String?  @db.Text
+  isActive    Boolean  @default(true)
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  items FeaturedItem[]
+
+  @@index([isActive, sortOrder])
+  @@schema("public")
+}
+
+model FeaturedItem {
+  id        String  @id @default(cuid())
+  sectionId String
+  bookId    String?
+  authorId  String?
+  storyId   String?
+  sortOrder Int     @default(0)
+
+  section FeaturedSection @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+  book    Book?           @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  author  Author?         @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  story   Story?          @relation(fields: [storyId], references: [id], onDelete: Cascade)
+
+  @@index([sectionId, sortOrder])
+  @@index([bookId])
+  @@index([authorId])
+  @@index([storyId])
+  @@schema("public")
+}

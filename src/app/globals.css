@@ -1,0 +1,2012 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&display=swap");
+@import "tailwindcss";
+
+/* =====================================
+   INKLINGS - FLORAL GLASS THEME
+===================================== */
+
+:root {
+  --background: #eaf3f8;
+  --surface: rgba(255, 255, 255, 0.72);
+  --surface-soft: rgba(222, 238, 247, 0.78);
+  --foreground: #25465b;
+  --muted: #607d8e;
+  --sage: #d4e8f2;
+  --sage-dark: #376688;
+  --sage-deep: #234b66;
+  --rose: #f2e4ed;
+  --rose-dark: #9a6f91;
+  --border: rgba(255, 255, 255, 0.72);
+  --gold: #d5b56e;
+  --radius: 20px;
+  --shadow-soft: 0 8px 30px rgba(30, 73, 99, 0.09);
+  --shadow-card: 0 15px 40px rgba(30, 73, 99, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  background:
+    linear-gradient(
+      rgba(229, 242, 250, 0.58),
+      rgba(239, 231, 243, 0.48)
+    ),
+    url("https://png.pngtree.com/thumb_back/fh260/background/20250205/pngtree-soft-pastel-floral-design-light-blue-background-image_16896113.jpg")
+    center / cover fixed no-repeat;
+  background-color: var(--background);
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+input,
+textarea,
+select {
+  color: var(--foreground);
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: var(--sage-deep);
+  font-family: "Dancing Script", cursive;
+  letter-spacing: 0;
+}
+
+p,
+label,
+a,
+button,
+li,
+span {
+  overflow-wrap: anywhere;
+}
+
+/* =====================================
+   SHARED GLASS SURFACES
+===================================== */
+
+.site-navbar,
+.dashboard-header,
+.editor-header,
+.topbar,
+.auth-container,
+.signup-container,
+.login-container,
+.dashboard-hero,
+.dashboard-profile,
+.dashboard-panel,
+.story-editor-form,
+.story-card,
+.book-card,
+.writer-card,
+.profile-hero,
+.soft-panel {
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.66);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.site-navbar,
+.dashboard-header,
+.editor-header,
+.topbar {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+  background: rgba(15, 50, 75, 0.48);
+  color: white;
+}
+
+.site-navbar nav a,
+.dashboard-header > a:not(.dashboard-brand),
+.site-navbar > a:not(.site-logo),
+.topbar a {
+  color: white;
+}
+
+.site-navbar nav a:hover,
+.dashboard-header > a:hover,
+.topbar a:hover {
+  color: #ffe9a8;
+}
+
+.site-logo,
+.dashboard-brand,
+.auth-brand,
+.brand-name {
+  color: white;
+  font-family: "Dancing Script", cursive;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.page-container,
+.dashboard-container,
+.editor-container {
+  position: relative;
+}
+
+.section-header,
+.section-heading {
+  color: var(--sage-deep);
+}
+
+.story-card,
+.book-card,
+.writer-card {
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.64);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.story-card:hover,
+.book-card:hover,
+.writer-card:hover {
+  box-shadow: 0 15px 35px rgba(35, 75, 102, 0.16);
+}
+
+/* =====================================
+   HOMEPAGE
+===================================== */
+
+.library {
+  min-height: 100vh;
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  background: transparent;
+}
+
+/* Navbar */
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  min-height: 76px;
+  padding: 12px 34px;
+  border-radius: 0;
+}
+
+.brand {
+  color: white;
+  font-family: "Dancing Script", cursive;
+  font-size: 2rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.brand span {
+  color: #d7eefa;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: min(360px, 36vw);
+  padding: 12px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+}
+
+.search-box input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: var(--foreground);
+  font-size: 13px;
+}
+
+.account-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-link {
+  display: inline-block;
+  padding: 11px 14px;
+  border-radius: 999px;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.nav-primary,
+.hero-button {
+  background: rgba(35, 75, 102, 0.88);
+  color: white;
+}
+
+.nav-primary:hover,
+.hero-button:hover {
+  background: var(--sage-dark);
+}
+
+/* Main layout */
+
+.library-layout {
+  display: grid;
+  grid-template-columns: 218px minmax(0, 1fr);
+  min-height: calc(100vh - 76px);
+}
+
+/* Sidebar */
+
+.sidebar {
+  padding: 28px 20px;
+  border-right: 1px solid rgba(255, 255, 255, 0.8);
+  background: rgba(234, 244, 250, 0.55);
+  backdrop-filter: blur(14px);
+}
+
+.side-heading {
+  margin: 0 0 15px;
+  color: var(--sage-dark);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.side-list {
+  display: grid;
+  gap: 5px;
+  margin-bottom: 28px;
+}
+
+.side-button {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: transparent;
+  color: #46677c;
+  cursor: pointer;
+  font-size: 13px;
+  text-align: left;
+}
+
+.side-button:hover,
+.side-button.active {
+  border-color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--sage-deep);
+}
+
+.language-chip {
+  display: inline-flex;
+  margin: 0 4px 7px 0;
+  padding: 7px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--sage-dark);
+  font-size: 11px;
+}
+
+.sidebar-note {
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.52);
+  color: var(--sage-dark);
+  font-family: "Dancing Script", cursive;
+  font-size: 21px;
+  line-height: 1.5;
+}
+
+/* Main content */
+
+.main-content {
+  min-width: 0;
+  padding: 30px clamp(18px, 3vw, 44px) 54px;
+}
+
+/* Hero */
+
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  overflow: hidden;
+  padding: clamp(26px, 4vw, 45px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 24px;
+  background: rgba(225, 240, 249, 0.58);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(16px);
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 1;
+  max-width: 590px;
+}
+
+.eyebrow,
+.section-kicker {
+  color: #547f9b;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.hero h1 {
+  margin: 13px 0;
+  color: var(--sage-deep);
+  font-family: "Dancing Script", cursive;
+  font-size: clamp(38px, 4.5vw, 64px);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.hero p:not(.eyebrow) {
+  max-width: 490px;
+  color: #46677c;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 23px;
+}
+
+.hero-button {
+  display: inline-block;
+  padding: 13px 17px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.hero-button.secondary {
+  border: 1px solid rgba(55, 102, 136, 0.45);
+  background: rgba(255, 255, 255, 0.65);
+  color: var(--sage-deep);
+}
+
+.hero-flower {
+  flex-shrink: 0;
+  color: #6e9db8;
+  opacity: 0.55;
+  font-family: "Dancing Script", cursive;
+  font-size: clamp(80px, 13vw, 170px);
+}
+
+/* Book sections */
+
+.library-section {
+  margin-top: 36px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 17px;
+}
+
+.section-heading h2 {
+  margin: 5px 0 0;
+  color: var(--sage-deep);
+  font-family: "Dancing Script", cursive;
+  font-size: clamp(28px, 3vw, 38px);
+  font-weight: 700;
+}
+
+.section-kicker {
+  margin: 0;
+  font-size: 10px;
+}
+
+.section-count {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* Book grid */
+
+.library .book-shelf {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: start;
+  gap: 22px 17px;
+}
+
+.library .book-card {
+  display: block;
+  min-width: 0;
+  overflow: visible;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: inherit;
+  text-decoration: none;
+}
+
+.library .book-card:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.book-cover-art {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  aspect-ratio: 2 / 3;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 5px 12px 12px 5px;
+  color: white;
+  text-align: center;
+  box-shadow: 3px 5px 12px rgba(35, 75, 102, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.book-cover-art::before {
+  position: absolute;
+  inset: 7px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  content: "";
+  pointer-events: none;
+}
+
+.library .book-card:hover .book-cover-art {
+  transform: translateY(-4px);
+  box-shadow: 5px 12px 20px rgba(35, 75, 102, 0.2);
+}
+
+.cover-ornament {
+  margin-bottom: 18px;
+  font-size: 24px;
+}
+
+.cover-title {
+  font-family: "Dancing Script", cursive;
+  font-size: clamp(18px, 1.8vw, 25px);
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.cover-rule {
+  margin: 16px 0 10px;
+  font-size: 11px;
+}
+
+.cover-subtitle {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 7px;
+  letter-spacing: 1.4px;
+}
+
+.book-details {
+  padding-top: 11px;
+}
+
+.book-genre {
+  color: #547f9b;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+}
+
+.library .book-details h3 {
+  margin: 6px 0;
+  color: var(--sage-deep);
+  font-family: "Dancing Script", cursive;
+  font-size: 23px;
+  font-weight: 700;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.book-author,
+.book-description {
+  color: var(--muted);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+}
+
+.book-description {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  line-height: 1.6;
+}
+
+.read-hint {
+  color: var(--sage-dark);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.empty-shelf {
+  padding: 30px 20px;
+  border: 1px dashed rgba(55, 102, 136, 0.4);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.4);
+  color: var(--muted);
+  text-align: center;
+}
+
+.empty-shelf span {
+  color: #547f9b;
+  font-size: 28px;
+}
+
+/* Browse banner */
+
+.browse-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: 40px;
+  padding: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 20px;
+  background: rgba(35, 75, 102, 0.86);
+  color: white;
+  backdrop-filter: blur(12px);
+}
+
+.browse-banner h2 {
+  margin: 0 0 6px;
+  color: white;
+  font-family: "Dancing Script", cursive;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.browse-banner p {
+  margin: 0;
+  color: #e5f0f6;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.browse-banner a {
+  flex-shrink: 0;
+  padding: 12px 15px;
+  border-radius: 999px;
+  background: #f5fbff;
+  color: var(--sage-deep);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.library .site-footer {
+  padding: 32px 10px 0;
+  color: var(--muted);
+  font-family: "Dancing Script", cursive;
+  font-size: 19px;
+  text-align: center;
+}
+
+.mobile-menu {
+  display: none;
+}
+
+/* =====================================
+   AUTHENTICATION PAGES
+===================================== */
+
+.auth-page {
+  min-height: 100vh;
+  background: rgba(224, 239, 248, 0.38);
+}
+
+.auth-container,
+.signup-container,
+.login-container {
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.auth-container h1,
+.signup-container h1,
+.login-container h1 {
+  font-family: "Dancing Script", cursive;
+  font-size: 42px;
+}
+
+.auth-form label,
+.story-editor-form label {
+  color: var(--sage-deep);
+}
+
+.auth-form input,
+.story-editor-form input,
+.story-editor-form textarea,
+.story-editor-form select {
+  border: 1px solid rgba(55, 102, 136, 0.2);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.auth-submit,
+.primary-button,
+.btn-primary {
+  border: 1px solid var(--sage-dark);
+  border-radius: 12px;
+  background: var(--sage-dark);
+  color: white;
+  cursor: pointer;
+}
+
+.auth-submit:hover,
+.primary-button:hover,
+.btn-primary:hover {
+  background: var(--sage-deep);
+}
+
+.auth-footer a,
+.auth-switch a,
+.text-link,
+.story-back-link,
+.story-read-link {
+  color: var(--sage-dark);
+}
+
+/* =====================================
+   READER AND WRITER DASHBOARDS
+===================================== */
+
+.dashboard-page,
+.story-editor-page,
+.story-reader {
+  min-height: 100vh;
+  background: transparent;
+}
+
+.dashboard-hero,
+.dashboard-profile,
+.dashboard-panel,
+.story-editor-form,
+.story-content .stories-empty {
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.62);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.story-reader .story-content {
+  color: var(--foreground);
+}
+
+.story-body {
+  color: #344e60;
+  line-height: 1.9;
+}
+
+/* =====================================
+   RESPONSIVE DESIGN
+===================================== */
+
+@media (max-width: 1050px) {
+  .library .book-shelf {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .library-layout {
+    grid-template-columns: 185px minmax(0, 1fr);
+  }
+
+  .sidebar {
+    padding: 24px 13px;
+  }
+}
+
+@media (max-width: 700px) {
+  .topbar {
+    min-height: 70px;
+    padding: 13px 16px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .brand {
+    font-size: 25px;
+  }
+
+  .search-box {
+    order: 3;
+    width: 100%;
+  }
+
+  .account-links {
+    gap: 3px;
+  }
+
+  .nav-link {
+    padding: 9px;
+    font-size: 10px;
+  }
+
+  .library-layout {
+    display: block;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .sidebar.mobile-visible {
+    display: block;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+  }
+
+  .mobile-menu {
+    display: inline-flex;
+    margin-bottom: 18px;
+    padding: 9px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.7);
+    color: var(--sage-deep);
+  }
+
+  .main-content {
+    padding: 20px 16px 40px;
+  }
+
+  .hero {
+    padding: 25px 21px;
+  }
+
+  .hero-flower {
+    display: none;
+  }
+
+  .library .book-shelf {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 14px;
+  }
+
+  .browse-banner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .browse-banner a {
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+  }
+}
+
+@media (max-width: 400px) {
+  .library .book-shelf {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .account-links {
+    flex-wrap: wrap;
+  }
+}
+
+/* =====================================
+   INKLINGS - READER DASHBOARD
+===================================== */
+
+.dashboard-page {
+  min-height: 100vh;
+  padding-bottom: 60px;
+  color: #25465b;
+  background: transparent;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Dashboard navigation */
+
+.dashboard-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 76px;
+  padding: 14px 6%;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.65);
+  background: rgba(15, 50, 75, 0.65);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.dashboard-brand {
+  color: white;
+  font-family: "Dancing Script", cursive;
+  font-size: 36px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.dashboard-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.dashboard-label {
+  color: #e5f0f6;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+/* Welcome section */
+
+.dashboard-welcome {
+  width: min(1050px, 88%);
+  margin: 65px auto 45px;
+  padding: 48px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.66);
+  box-shadow: 0 15px 40px rgba(30, 73, 99, 0.12);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.dashboard-eyebrow {
+  margin: 0 0 12px;
+  color: #668da7;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.dashboard-welcome > h1 {
+  margin: 0 0 14px;
+  color: #234b66;
+  font-family: "Dancing Script", cursive;
+  font-size: clamp(38px, 5vw, 58px);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.dashboard-description {
+  max-width: 620px;
+  margin: 0;
+  color: #607d8e;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+/* Account profile */
+
+.dashboard-profile {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  max-width: 400px;
+  margin-top: 32px;
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 18px;
+  background: rgba(225, 240, 249, 0.65);
+  box-shadow: none;
+}
+
+.dashboard-avatar {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  border: 2px solid white;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #376688, #9a6f91);
+  color: white;
+  font-family: "Dancing Script", cursive;
+  font-size: 29px;
+  font-weight: 700;
+}
+
+.dashboard-profile h2 {
+  margin: 0 0 5px;
+  color: #234b66;
+  font-family: "Dancing Script", cursive;
+  font-size: 25px;
+}
+
+.dashboard-profile p {
+  margin: 0;
+  color: #607d8e;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+/* Dashboard navigation cards */
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  width: min(1050px, 88%);
+  margin: 0 auto;
+}
+
+.dashboard-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 205px;
+  padding: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.68);
+  box-shadow: 0 8px 30px rgba(30, 73, 99, 0.09);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-7px);
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 17px 35px rgba(30, 73, 99, 0.15);
+}
+
+.dashboard-card > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 53px;
+  height: 53px;
+  margin-bottom: 17px;
+  border-radius: 16px;
+  background: #e3f0f7;
+  font-size: 26px;
+}
+
+.dashboard-card h2 {
+  margin: 0 0 9px;
+  color: #234b66;
+  font-family: "Dancing Script", cursive;
+  font-size: 29px;
+  font-weight: 700;
+}
+
+.dashboard-card p {
+  margin: 0;
+  color: #607d8e;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* Responsive dashboard */
+
+@media (max-width: 750px) {
+  .dashboard-header {
+    padding: 13px 5%;
+  }
+
+  .dashboard-brand {
+    font-size: 30px;
+  }
+
+  .dashboard-header-actions {
+    gap: 10px;
+  }
+
+  .dashboard-label {
+    display: none;
+  }
+
+  .dashboard-welcome {
+    width: 90%;
+    margin: 35px auto;
+    padding: 28px 22px;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    width: 90%;
+    gap: 16px;
+  }
+
+  .dashboard-card {
+    min-height: 160px;
+  }
+}
+
+/* =====================================
+   INKLINGS - WRITER LOGIN
+===================================== */
+
+.auth-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: rgba(225, 240, 249, 0.25);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 460px;
+  padding: 42px 40px;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 18px 50px rgba(35, 75, 102, 0.15);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.auth-brand {
+  display: inline-block;
+  margin-bottom: 25px;
+  color: #376688;
+  font-family: "Dancing Script", cursive;
+  font-size: 38px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.auth-card h1 {
+  margin: 0 0 10px;
+  color: #234b66;
+  font-family: "Dancing Script", cursive;
+  font-size: 43px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.auth-subtitle {
+  margin: 0 0 30px;
+  color: #607d8e;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.auth-form label {
+  margin-top: 8px;
+  color: #376688;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.auth-form input {
+  width: 100%;
+  min-width: 0;
+  height: 48px;
+  padding: 0 15px;
+  border: 1px solid rgba(55, 102, 136, 0.23);
+  border-radius: 12px;
+  outline: none;
+  background: rgba(255, 255, 255, 0.85);
+  color: #25465b;
+  font-size: 14px;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.auth-form input:focus {
+  border-color: #6e9db8;
+  box-shadow: 0 0 0 3px rgba(110, 157, 184, 0.14);
+}
+
+.password-field {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-field input {
+  padding-right: 65px;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 12px;
+  border: none;
+  background: transparent;
+  color: #376688;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.auth-error {
+  margin: 8px 0;
+  padding: 11px 13px;
+  border: 1px solid rgba(190, 90, 90, 0.2);
+  border-radius: 10px;
+  background: rgba(255, 230, 230, 0.75);
+  color: #a33f4b;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.auth-submit {
+  width: 100%;
+  min-height: 49px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 13px;
+  background: #376688;
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.auth-submit:hover:not(:disabled) {
+  transform: translateY(-2px);
+  background: #234b66;
+}
+
+.auth-submit:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.auth-switch {
+  margin: 25px 0 0;
+  color: #607d8e;
+  font-size: 12px;
+  line-height: 1.8;
+  text-align: center;
+}
+
+.auth-switch a {
+  color: #376688;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.auth-switch a:hover {
+  color: #234b66;
+  text-decoration: underline;
+}
+
+@media (max-width: 500px) {
+  .auth-card {
+    padding: 32px 23px;
+  }
+
+  .auth-card h1 {
+    font-size: 36px;
+  }
+}
+/* WRITER SIGNUP PAGE */
+
+.auth-card {
+  max-width: 480px;
+}
+
+.auth-success {
+  width: 100%;
+  padding: 13px 16px;
+  margin: 8px 0;
+  border: 1px solid rgba(75, 145, 105, 0.3);
+  border-radius: 12px;
+  background: rgba(218, 245, 225, 0.75);
+  color: #285b3b;
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.auth-form input {
+  width: 100%;
+}
+
+.auth-form button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* =========================================
+   WRITER DASHBOARD — INKLINGS
+========================================= */
+
+.studio-page {
+  min-height: 100vh;
+  color: #30495a;
+  font-family: Arial, sans-serif;
+}
+
+.studio-nav {
+  min-height: 76px;
+  padding: 14px clamp(20px, 5vw, 72px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.48);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.studio-brand {
+  color: #376688;
+  font-family: "Dancing Script", cursive;
+  font-size: 36px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.studio-nav-label {
+  color: #64859a;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.studio-container {
+  width: min(1120px, 100%);
+  margin: 0 auto;
+  padding: 40px 24px 64px;
+}
+
+.studio-eyebrow {
+  color: #668ba4;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.studio-hero {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(24px, 5vw, 48px);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.43);
+  box-shadow: 0 10px 35px rgba(49, 83, 105, 0.08);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.studio-hero::after {
+  content: "❧";
+  position: absolute;
+  right: 18px;
+  bottom: -48px;
+  color: rgba(80, 130, 160, 0.09);
+  font-size: 210px;
+  pointer-events: none;
+}
+
+.studio-profile {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.studio-avatar {
+  width: 112px;
+  height: 112px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 4px solid rgba(255, 255, 255, 0.85);
+  border-radius: 50%;
+  background: #dceaf1;
+  color: #376688;
+  font-size: 42px;
+  box-shadow: 0 6px 20px rgba(55, 102, 136, 0.12);
+}
+
+.studio-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.studio-name {
+  margin: 7px 0 8px;
+  color: #25465d;
+  font-family: "Dancing Script", cursive;
+  font-size: clamp(32px, 4vw, 46px);
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.studio-bio {
+  max-width: 670px;
+  margin: 0;
+  color: #617b8d;
+  font-size: 15px;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.studio-actions {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.studio-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border: 1px solid rgba(75, 119, 148, 0.4);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.65);
+  color: #376688;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.studio-button:hover {
+  transform: translateY(-2px);
+  background: #eaf3f8;
+  box-shadow: 0 6px 15px rgba(55, 102, 136, 0.1);
+}
+
+.studio-button-primary {
+  border-color: #376688;
+  background: #376688;
+  color: white;
+}
+
+.studio-button-primary:hover {
+  background: #254d69;
+  color: white;
+}
+
+.studio-section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 42px 0 18px;
+}
+
+.studio-section-heading h2 {
+  margin: 0;
+  color: #294c64;
+  font-family: "Dancing Script", cursive;
+  font-size: 32px;
+}
+
+.studio-muted {
+  color: #78909f;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.studio-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 22px;
+}
+
+.studio-stat {
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.52);
+  box-shadow: 0 6px 20px rgba(49, 83, 105, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.studio-stat strong {
+  display: block;
+  margin: 8px 0 4px;
+  color: #376688;
+  font-family: "Dancing Script", cursive;
+  font-size: 38px;
+}
+
+.studio-stat span {
+  color: #70899a;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.studio-work-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.studio-work-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.55);
+  color: inherit;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(49, 83, 105, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.studio-work-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(49, 83, 105, 0.12);
+}
+
+.studio-work-card h3 {
+  margin: 15px 0 8px;
+  color: #315873;
+  font-family: "Dancing Script", cursive;
+  font-size: 25px;
+  overflow-wrap: anywhere;
+}
+
+.studio-work-card p {
+  color: #718797;
+  font-size: 14px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.studio-tag {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 6px 11px;
+  border-radius: 20px;
+  background: #e5f0f5;
+  color: #527d98;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.studio-status {
+  margin-top: auto;
+  padding-top: 14px;
+  color: #78909f;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.studio-empty {
+  grid-column: 1 / -1;
+  padding: 42px 22px;
+  border: 1px dashed rgba(92, 139, 165, 0.45);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.5);
+  text-align: center;
+}
+
+.studio-empty-icon {
+  font-size: 34px;
+}
+
+.studio-empty h3 {
+  color: #315873;
+  font-family: "Dancing Script", cursive;
+  font-size: 27px;
+}
+
+.studio-footer {
+  padding-top: 32px;
+  color: #8298a6;
+  font-size: 12px;
+  text-align: center;
+}
+
+/* RESPONSIVE DASHBOARD */
+
+@media (max-width: 640px) {
+  .studio-container {
+    padding: 24px 16px 44px;
+  }
+
+  .studio-nav {
+    padding: 14px 18px;
+  }
+
+  .studio-brand {
+    font-size: 30px;
+  }
+
+  .studio-nav-label {
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+
+  .studio-profile {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .studio-avatar {
+    width: 88px;
+    height: 88px;
+  }
+
+  .studio-stats {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .studio-stat {
+    padding: 17px;
+  }
+
+  .studio-stat strong {
+    font-size: 30px;
+  }
+
+  .studio-work-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .studio-actions {
+    flex-direction: column;
+  }
+
+  .studio-button {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .studio-section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+.full-width-layout {
+  display: block;
+  width: 100%;
+}
+
+.main-content {
+  width: 100%;
+  max-width: 100%;
+}
+
+.browse-options {
+  width: 100%;
+  margin: 20px 0;
+  padding: 18px 22px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(12px);
+}
+
+.browse-toggle {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 600;
+  text-align: left;
+}
+
+.browse-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.admin-welcome {
+  padding: 35px;
+  border: 1px solid rgba(55, 102, 136, 0.13);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.62);
+  box-shadow: 0 12px 35px rgba(42, 76, 99, 0.05);
+}
+
+.admin-eyebrow {
+  color: #b18488;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.admin-welcome h1 {
+  margin: 12px 0;
+  color: #244d68;
+  font-family: "Dancing Script", cursive;
+  font-size: clamp(30px, 4vw, 43px);
+}
+
+.admin-welcome p,
+.admin-management-card p {
+  color: #718895;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.admin-stat-card {
+  padding: 22px;
+  border: 1px solid rgba(55, 102, 136, 0.12);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.admin-stat-icon {
+  font-size: 23px;
+  color: #b18488;
+}
+
+.admin-stat-card p {
+  margin: 18px 0 7px;
+  color: #8195a1;
+  font-size: 13px;
+}
+
+.admin-stat-card h2 {
+  margin: 0;
+  color: #244d68;
+  font-size: 29px;
+}
+
+.admin-management {
+  margin-top: 45px;
+}
+
+.admin-section-heading h2 {
+  margin-top: 9px;
+  color: #244d68;
+  font-size: 23px;
+}
+
+.admin-management-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 22px;
+}
+
+.admin-management-card {
+  padding: 25px;
+  border: 1px solid rgba(55, 102, 136, 0.13);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.68);
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.admin-management-card:hover {
+  transform: translateY(-3px);
+  background: white;
+  box-shadow: 0 12px 25px rgba(42, 76, 99, 0.07);
+}
+
+.admin-management-card h3 {
+  color: #315d77;
+  font-size: 16px;
+}
+
+.admin-management-card p {
+  margin-bottom: 0;
+}
+
+@media (max-width: 950px) {
+  .admin-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .admin-management-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-welcome {
+    padding: 24px;
+  }
+}
+
+
+/* =====================================
+   INKLINGS ADMIN PANEL — MAIN LAYOUT
+===================================== */
+
+.admin-shell {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  color: #25465b;
+  background: rgba(234, 243, 248, 0.82);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.admin-sidebar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: 255px;
+  height: 100vh;
+  padding: 30px 20px;
+  border-right: 1px solid rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.76);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.admin-brand {
+  display: block;
+  color: #244d68;
+  font-family: "Dancing Script", cursive;
+  font-size: 36px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.admin-brand span {
+  color: #b18488;
+}
+
+.admin-brand small {
+  display: block;
+  margin-top: 5px;
+  color: #8298a6;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+
+.admin-nav-heading {
+  margin: 42px 0 14px;
+  color: #91a5b1;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.admin-navigation {
+  display: grid;
+  gap: 7px;
+}
+
+.admin-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 12px 14px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  color: #536d7d;
+  font-size: 13px;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.admin-nav-link:hover {
+  border-color: rgba(255, 255, 255, 0.9);
+  background: #eaf3f8;
+  color: #234b66;
+}
+
+.admin-nav-icon {
+  width: 23px;
+  color: #7697aa;
+  font-size: 18px;
+  text-align: center;
+}
+
+.admin-bottom-heading {
+  margin-top: 32px;
+}
+
+.admin-sidebar-footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid rgba(55, 102, 136, 0.15);
+}
+
+.admin-avatar {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border: 2px solid white;
+  border-radius: 50%;
+  background: #7697aa;
+  color: white;
+  font-family: "Dancing Script", cursive;
+  font-size: 22px;
+}
+
+.admin-sidebar-footer strong,
+.admin-sidebar-footer small {
+  display: block;
+}
+
+.admin-sidebar-footer strong {
+  color: #315873;
+  font-size: 13px;
+}
+
+.admin-sidebar-footer small {
+  margin-top: 4px;
+  color: #91a5b1;
+  font-size: 11px;
+}
+
+.admin-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.admin-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 76px;
+  padding: 15px 38px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(15px);
+}
+
+.admin-topbar-label {
+  color: #8298a6;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.admin-view-site {
+  color: #376688;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.admin-view-site:hover {
+  color: #9a6f91;
+}
+
+.admin-content {
+  width: 100%;
+  max-width: 1450px;
+  margin: 0 auto;
+  padding: 38px;
+}
+
+/* ADMIN RESPONSIVE */
+
+@media (max-width: 760px) {
+  .admin-sidebar {
+    width: 75px;
+    padding: 25px 9px;
+  }
+
+  .admin-brand {
+    font-size: 23px;
+    text-align: center;
+  }
+
+  .admin-brand small,
+  .admin-nav-heading,
+  .admin-sidebar-footer div {
+    display: none;
+  }
+
+  .admin-nav-link {
+    justify-content: center;
+    padding: 12px 5px;
+    font-size: 0;
+  }
+
+  .admin-sidebar-footer {
+    justify-content: center;
+  }
+
+  .admin-topbar {
+    padding: 15px;
+  }
+
+  .admin-content {
+    padding: 22px 15px;
+  }
+}
+
