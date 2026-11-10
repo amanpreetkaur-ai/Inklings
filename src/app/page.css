@@ -1,0 +1,320 @@
+/* Base pastel background for the whole page to make the glass effect pop */
+body {
+margin: 0;
+font-family: system-ui, -apple-system, sans-serif;
+background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+background-attachment: fixed;
+color: #333;
+}
+
+.library {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+}
+
+/* Glassmorphism Header */
+.topbar {
+  z-index: 100;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
+  display: flex;
+  position: sticky;
+  top: 0;
+  
+  /* Glassmorphism Fixes */
+  background: rgba(116, 88, 255, 0.5); /* Slightly more transparent than #7458ffae */
+  -webkit-backdrop-filter: blur(16px); /* For Safari */
+  backdrop-filter: blur(5px); /* For Firefox and Chrome */
+}
+
+.brand {
+font-weight: 800;
+font-size: 1.25rem;
+text-decoration: none;
+color: #2c3e50;
+letter-spacing: 1px;
+}
+
+.brand span {
+color: #69465f;
+}
+
+/* Search Box */
+.search-box {
+display: flex;
+align-items: center;
+gap: 0.5rem;
+background: rgba(255, 255, 255, 0.782);
+padding: 0.5rem 1rem;
+border-radius: 20px;
+border: 1px solid rgba(255, 255, 255, 0.5);
+width: 100%;
+max-width: 400px;
+transition: background 0.3s ease;
+}
+
+.search-box:focus-within {
+background: rgba(255, 255, 255, 0.6);
+box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.8);
+}
+
+.search-box input {
+border: none;
+background: transparent;
+outline: none;
+width: 100%;
+font-size: 0.95rem;
+color: #333;
+}
+
+.account-links {
+display: flex;
+gap: 1rem;
+align-items: center;
+}
+
+.nav-link {
+text-decoration: none;
+color: #4a5568;
+font-weight: 500;
+font-size: 0.9rem;
+}
+
+.nav-primary {
+background: rgba(255, 255, 255, 0.5);
+padding: 0.5rem 1.25rem;
+border-radius: 20px;
+border: 1px solid rgba(255, 255, 255, 0.6);
+transition: all 0.2s;
+}
+
+.nav-primary:hover {
+background: rgba(255, 255, 255, 0.8);
+}
+
+/* Layout */
+.library-layout {
+padding: 2rem 5%;
+flex: 1;
+}
+
+/* Glassmorphism Sections (Browse Options) */
+.browse-options {
+background: rgba(255, 255, 255, 0.2);
+backdrop-filter: blur(10px);
+-webkit-backdrop-filter: blur(10px);
+border: 1px solid rgba(255, 255, 255, 0.4);
+border-radius: 16px;
+margin-bottom: 1.5rem;
+overflow: hidden;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+.browse-toggle {
+width: 100%;
+display: flex;
+justify-content: space-between;
+background: transparent;
+border: none;
+padding: 1rem 1.5rem;
+font-size: 1rem;
+font-weight: 600;
+color: #2d3748;
+cursor: pointer;
+}
+
+.browse-items {
+padding: 0 1.5rem 1.5rem;
+display: flex;
+flex-wrap: wrap;
+gap: 0.75rem;
+}
+
+/* Chips & Buttons */
+.side-button, .language-chip {
+background: rgba(255, 255, 255, 0.3);
+border: 1px solid rgba(255, 255, 255, 0.5);
+padding: 0.5rem 1rem;
+border-radius: 20px;
+cursor: pointer;
+font-size: 0.85rem;
+color: #4a5568;
+transition: all 0.2s ease;
+}
+
+.side-button:hover, .language-chip:hover {
+background: rgba(255, 255, 255, 0.6);
+transform: translateY(-1px);
+}
+
+.side-button.active {
+background: rgba(255, 255, 255, 0.8);
+font-weight: 600;
+box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Shelves (CSS Grid) */
+.library-section {
+margin-top: 3rem;
+margin-bottom: 3rem;
+}
+
+.section-heading {
+display: flex;
+justify-content: space-between;
+align-items: flex-end;
+margin-bottom: 1.5rem;
+border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+padding-bottom: 0.5rem;
+}
+
+.section-kicker {
+font-size: 0.75rem;
+font-weight: 700;
+letter-spacing: 1px;
+color: #718096;
+margin: 0 0 0.25rem 0;
+}
+
+.section-heading h2 {
+margin: 0;
+font-size: 1.75rem;
+color: #2d3748;
+}
+
+.book-shelf {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+gap: 2rem;
+}
+
+/* Glass Book Cards */
+.book-card {
+text-decoration: none;
+color: inherit;
+background: rgba(255, 255, 255, 0.15);
+backdrop-filter: blur(8px);
+-webkit-backdrop-filter: blur(8px);
+border: 1px solid rgba(255, 255, 255, 0.4);
+border-radius: 16px;
+padding: 1rem;
+display: flex;
+flex-direction: column;
+transition: all 0.3s ease;
+box-shadow: 0 4px 15px rgba(31, 38, 135, 0.05);
+}
+
+.book-card:hover {
+transform: translateY(-5px);
+background: rgba(255, 255, 255, 0.3);
+box-shadow: 0 10px 25px rgba(31, 38, 135, 0.1);
+border-color: rgba(255, 255, 255, 0.6);
+}
+
+.book-cover-art {
+height: 280px;
+border-radius: 8px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+text-align: center;
+padding: 1.5rem;
+color: white;
+box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+margin-bottom: 1rem;
+}
+
+.cover-title {
+font-size: 1.25rem;
+font-weight: 700;
+margin: 0.5rem 0;
+text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.book-details h3 {
+margin: 0.25rem 0;
+font-size: 1.1rem;
+color: #2d3748;
+}
+
+.book-genre {
+font-size: 0.75rem;
+text-transform: uppercase;
+letter-spacing: 0.5px;
+color: #718096;
+}
+
+.book-description {
+font-size: 0.85rem;
+color: #4a5568;
+display: -webkit-box;
+-webkit-line-clamp: 3;
+-webkit-box-orient: vertical;
+overflow: hidden;
+margin-top: 0.5rem;
+}
+
+.read-hint {
+margin-top: auto;
+padding-top: 1rem;
+font-size: 0.85rem;
+font-weight: 600;
+color: #69465f;
+opacity: 0;
+transition: opacity 0.3s ease;
+}
+
+.book-card:hover .read-hint {
+opacity: 1;
+}
+
+/* Banner */
+.browse-banner {
+margin-top: 4rem;
+padding: 3rem;
+background: rgba(255, 255, 255, 0.2);
+backdrop-filter: blur(12px);
+-webkit-backdrop-filter: blur(12px);
+border: 1px solid rgba(255, 255, 255, 0.5);
+border-radius: 24px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+box-shadow: 0 8px 32px rgba(31, 38, 135, 0.07);
+}
+
+.browse-banner h2 {
+margin: 0 0 0.5rem 0;
+color: #2d3748;
+}
+
+.browse-banner p {
+margin: 0;
+color: #4a5568;
+}
+
+.browse-banner a {
+background: #69465f;
+color: white;
+text-decoration: none;
+padding: 0.75rem 1.5rem;
+border-radius: 30px;
+font-weight: 600;
+transition: background 0.2s;
+}
+
+.browse-banner a:hover {
+background: #4c3148;
+}
+
+.site-footer {
+margin-top: 3rem;
+padding-top: 2rem;
+border-top: 1px solid rgba(255, 255, 255, 0.3);
+text-align: center;
+color: #718096;
+font-size: 0.85rem;
+}

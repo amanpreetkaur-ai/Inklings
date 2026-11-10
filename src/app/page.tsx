@@ -1,9 +1,9 @@
-
 "use client";
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
+import './page.css'
 
 type Story = {
   id: string;
@@ -30,15 +30,6 @@ const genres = [
 ];
 
 const languages = ["English", "Hindi", "Punjabi", "Urdu"];
-
-const coverStyles = [
-  "linear-gradient(145deg,#4c3148,#b87e91)",
-  "linear-gradient(145deg,#173c3a,#8eaa91)",
-  "linear-gradient(145deg,#b66b59,#f0c9a9)",
-  "linear-gradient(145deg,#293858,#879cc6)",
-  "linear-gradient(145deg,#6e4b36,#d7b68b)",
-  "linear-gradient(145deg,#69465f,#d6a9c2)",
-];
 
 export default function Home() {
   const [stories, setStories] = useState<Story[]>([]);
@@ -112,12 +103,6 @@ export default function Home() {
         ) : (
           <div className="book-shelf">
             {items.map((story) => {
-              const index = stories.findIndex(
-                (item) => item.id === story.id
-              );
-              const cover =
-                coverStyles[(Math.max(index, 0)) % coverStyles.length];
-
               return (
                 <Link
                   key={story.id}
@@ -126,22 +111,18 @@ export default function Home() {
                   aria-label={`Open ${story.title}`}
                 >
                   <div
-  className="book-cover-art"
-  style={{
-  background: story.cover_image_url
-    ? `linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.35)), url("${story.cover_image_url}") center / cover no-repeat`
-    : coverStyles[Math.max(index, 0) % coverStyles.length],
-}}
->
-  {!story.cover_image_url && (
-    <>
-      <span className="cover-ornament">❧</span>
-      <span className="cover-title">{story.title}</span>
-      <span className="cover-rule">✦ ─ ✦</span>
-      <span className="cover-subtitle">AN INKLINGS STORY</span>
-    </>
-  )}
-</div>
+                    className="book-cover-art"
+                    style={story.cover_image_url ? { backgroundImage: `url("${story.cover_image_url}")`, backgroundSize: 'cover', backgroundPosition: 'center' } : {}}
+                  >
+                    {!story.cover_image_url && (
+                      <>
+                        <span className="cover-ornament">❧</span>
+                        <span className="cover-title">{story.title}</span>
+                        <span className="cover-rule">✦ ─ ✦</span>
+                        <span className="cover-subtitle">AN INKLINGS STORY</span>
+                      </>
+                    )}
+                  </div>
 
                   <div className="book-details">
                     <span className="book-genre">
@@ -169,7 +150,7 @@ export default function Home() {
       
       <header className="topbar">
         <Link href="/" className="brand">
-          INK<span>L</span>INGS
+          INKLINGS
         </Link>
 
         <label className="search-box">
@@ -197,66 +178,66 @@ export default function Home() {
 
         <div className="main-content">
           {/* Explore Genres */}
-<section className="browse-options">
+          <section className="browse-options">
 
-  <button
-    type="button"
-    className="browse-toggle"
-    onClick={() => setGenresOpen(!genresOpen)}
-    aria-expanded={genresOpen}
-  >
-    <span>Explore genres</span>
-    <span>{genresOpen ? "−" : "+"}</span>
-  </button>
+            <button
+              type="button"
+              className="browse-toggle"
+              onClick={() => setGenresOpen(!genresOpen)}
+              aria-expanded={genresOpen}
+            >
+              <span>Explore genres</span>
+              <span>{genresOpen ? "−" : "+"}</span>
+            </button>
 
-  {genresOpen && (
-    <div className="browse-items">
-      <button
-        className={`side-button ${selectedGenre === "All" ? "active" : ""}`}
-        onClick={() => setSelectedGenre("All")}
-      >
-        All stories
-      </button>
+            {genresOpen && (
+              <div className="browse-items">
+                <button
+                  className={`side-button ${selectedGenre === "All" ? "active" : ""}`}
+                  onClick={() => setSelectedGenre("All")}
+                >
+                  All stories
+                </button>
 
-      {genres.map((genre) => (
-        <button
-          key={genre}
-          className={`side-button ${selectedGenre === genre ? "active" : ""}`}
-          onClick={() => setSelectedGenre(genre)}
-        >
-          {genre}
-        </button>
-      ))}
-    </div>
-  )}
+                {genres.map((genre) => (
+                  <button
+                    key={genre}
+                    className={`side-button ${selectedGenre === genre ? "active" : ""}`}
+                    onClick={() => setSelectedGenre(genre)}
+                  >
+                    {genre}
+                  </button>
+                ))}
+              </div>
+            )}
 
-</section>
+          </section>
 
 
-{/* Read in Your Language */}
-<section className="browse-options">
+          {/* Read in Your Language */}
+          <section className="browse-options">
 
-  <button
-    type="button"
-    className="browse-toggle"
-    onClick={() => setLanguagesOpen(!languagesOpen)}
-    aria-expanded={languagesOpen}
-  >
-    <span>Read in your language</span>
-    <span>{languagesOpen ? "−" : "+"}</span>
-  </button>
+            <button
+              type="button"
+              className="browse-toggle"
+              onClick={() => setLanguagesOpen(!languagesOpen)}
+              aria-expanded={languagesOpen}
+            >
+              <span>Read in your language</span>
+              <span>{languagesOpen ? "−" : "+"}</span>
+            </button>
 
-  {languagesOpen && (
-    <div className="browse-items">
-      {languages.map((language) => (
-        <span className="language-chip" key={language}>
-          {language}
-        </span>
-      ))}
-    </div>
-  )}
+            {languagesOpen && (
+              <div className="browse-items">
+                {languages.map((language) => (
+                  <span className="language-chip" key={language}>
+                    {language}
+                  </span>
+                ))}
+              </div>
+            )}
 
-</section>
+          </section>
           
           {search || selectedGenre !== "All" ? (
             <section className="library-section">
@@ -280,7 +261,6 @@ export default function Home() {
               ) : (
                 <div className="book-shelf">
                   {filteredStories.map((story) => {
-                    const index = stories.findIndex((s) => s.id === story.id);
                     return (
                       <Link
                         key={story.id}
@@ -289,14 +269,16 @@ export default function Home() {
                       >
                         <div
                           className="book-cover-art"
-                          style={{
-                            background: coverStyles[Math.max(index, 0) % coverStyles.length],
-                          }}
+                          style={story.cover_image_url ? { backgroundImage: `url("${story.cover_image_url}")`, backgroundSize: 'cover', backgroundPosition: 'center' } : {}}
                         >
-                          <span className="cover-ornament">❧</span>
-                          <span className="cover-title">{story.title}</span>
-                          <span className="cover-rule">✦ ─ ✦</span>
-                          <span className="cover-subtitle">AN INKLINGS STORY</span>
+                          {!story.cover_image_url && (
+                            <>
+                              <span className="cover-ornament">❧</span>
+                              <span className="cover-title">{story.title}</span>
+                              <span className="cover-rule">✦ ─ ✦</span>
+                              <span className="cover-subtitle">AN INKLINGS STORY</span>
+                            </>
+                          )}
                         </div>
                         <div className="book-details">
                           <span className="book-genre">{story.genre || "Creative writing"}</span>
