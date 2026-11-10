@@ -10,6 +10,7 @@ const navigation = [
   { label: "Books", href: "/admin/books", icon: "▤" },
   { label: "Genres", href: "/admin/genres", icon: "◇" },
   { label: "Languages", href: "/admin/languages", icon: "文" },
+  { label: "Users", href: "/admin/users", icon: "♙" },
 ];
 
 export default async function AdminLayout({

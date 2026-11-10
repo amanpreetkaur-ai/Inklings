@@ -2010,3 +2010,114 @@ span {
   }
 }
 
+
+.admin-user-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 24px 0;
+}
+
+.admin-user-filters input,
+.admin-user-filters select {
+  padding: 12px 16px;
+  border: 1px solid #d9e2e9;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.75);
+  color: #24445b;
+}
+
+.admin-user-filters input {
+  flex: 1;
+  min-width: 200px;
+}
+
+.admin-user-filters button {
+  padding: 12px 22px;
+  border: 0;
+  border-radius: 12px;
+  background: #376688;
+  color: white;
+  cursor: pointer;
+}
+
+.admin-user-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 16px;
+}
+
+.admin-user-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.7);
+  color: #24445b;
+}
+
+.admin-user-table th,
+.admin-user-table td {
+  padding: 16px;
+  text-align: left;
+  border-bottom: 1px solid #e5edf2;
+  white-space: nowrap;
+}
+
+.admin-user-table th {
+  font-size: 13px;
+  color: #678095;
+}
+
+.admin-status-active,
+.admin-status-inactive {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+.admin-status-active {
+  background: #e4f4e9;
+  color: #287448;
+}
+
+.admin-status-inactive {
+  background: #fce8e8;
+  color: #a33c3c;
+}
+
+.admin-user-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.admin-user-actions button,
+.admin-user-actions select,
+.admin-user-edit input,
+.admin-user-edit textarea {
+  padding: 8px 12px;
+  border: 1px solid #b7cbd9;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.75);
+  color: #173c55;
+  font: inherit;
+}
+
+.admin-user-edit {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 180px;
+}
+
+.admin-user-edit textarea {
+  min-height: 65px;
+  resize: vertical;
+}
+
+.admin-user-actions small {
+  color: #54758a;
+  font-size: 11px;
+}
+

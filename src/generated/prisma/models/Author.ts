@@ -547,10 +547,6 @@ export type EnumAuthorTypeFieldUpdateOperationsInput = {
   set?: $Enums.AuthorType
 }
 
-export type BoolFieldUpdateOperationsInput = {
-  set?: boolean
-}
-
 export type AuthorCreateNestedOneWithoutBooksInput = {
   create?: Prisma.XOR<Prisma.AuthorCreateWithoutBooksInput, Prisma.AuthorUncheckedCreateWithoutBooksInput>
   connectOrCreate?: Prisma.AuthorCreateOrConnectWithoutBooksInput

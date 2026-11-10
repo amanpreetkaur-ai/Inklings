@@ -97,6 +97,7 @@ model User {
   isActive       Boolean  @default(true)
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
+  isPrimaryAdmin Boolean @default(false)
 
   stories       Story[]
   authorProfile Author?

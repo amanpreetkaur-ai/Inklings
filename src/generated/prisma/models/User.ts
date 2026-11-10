@@ -32,8 +32,10 @@ export type UserMinAggregateOutputType = {
   bio: string | null
   avatarUrl: string | null
   role: $Enums.UserRole | null
+  isActive: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
+  isPrimaryAdmin: boolean | null
 }
 
 export type UserMaxAggregateOutputType = {
@@ -44,8 +46,10 @@ export type UserMaxAggregateOutputType = {
   bio: string | null
   avatarUrl: string | null
   role: $Enums.UserRole | null
+  isActive: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
+  isPrimaryAdmin: boolean | null
 }
 
 export type UserCountAggregateOutputType = {
@@ -56,8 +60,10 @@ export type UserCountAggregateOutputType = {
   bio: number
   avatarUrl: number
   role: number
+  isActive: number
   createdAt: number
   updatedAt: number
+  isPrimaryAdmin: number
   _all: number
 }
 
@@ -70,8 +76,10 @@ export type UserMinAggregateInputType = {
   bio?: true
   avatarUrl?: true
   role?: true
+  isActive?: true
   createdAt?: true
   updatedAt?: true
+  isPrimaryAdmin?: true
 }
 
 export type UserMaxAggregateInputType = {
@@ -82,8 +90,10 @@ export type UserMaxAggregateInputType = {
   bio?: true
   avatarUrl?: true
   role?: true
+  isActive?: true
   createdAt?: true
   updatedAt?: true
+  isPrimaryAdmin?: true
 }
 
 export type UserCountAggregateInputType = {
@@ -94,8 +104,10 @@ export type UserCountAggregateInputType = {
   bio?: true
   avatarUrl?: true
   role?: true
+  isActive?: true
   createdAt?: true
   updatedAt?: true
+  isPrimaryAdmin?: true
   _all?: true
 }
 
@@ -179,8 +191,10 @@ export type UserGroupByOutputType = {
   bio: string | null
   avatarUrl: string | null
   role: $Enums.UserRole
+  isActive: boolean
   createdAt: Date
   updatedAt: Date
+  isPrimaryAdmin: boolean
   _count: UserCountAggregateOutputType | null
   _min: UserMinAggregateOutputType | null
   _max: UserMaxAggregateOutputType | null
@@ -212,8 +226,10 @@ export type UserWhereInput = {
   bio?: Prisma.StringNullableFilter<"User"> | string | null
   avatarUrl?: Prisma.StringNullableFilter<"User"> | string | null
   role?: Prisma.EnumUserRoleFilter<"User"> | $Enums.UserRole
+  isActive?: Prisma.BoolFilter<"User"> | boolean
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  isPrimaryAdmin?: Prisma.BoolFilter<"User"> | boolean
   stories?: Prisma.StoryListRelationFilter
   authorProfile?: Prisma.XOR<Prisma.AuthorNullableScalarRelationFilter, Prisma.AuthorWhereInput> | null
 }
@@ -226,8 +242,10 @@ export type UserOrderByWithRelationInput = {
   bio?: Prisma.SortOrderInput | Prisma.SortOrder
   avatarUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   role?: Prisma.SortOrder
+  isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  isPrimaryAdmin?: Prisma.SortOrder
   stories?: Prisma.StoryOrderByRelationAggregateInput
   authorProfile?: Prisma.AuthorOrderByWithRelationInput
 }
@@ -243,8 +261,10 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   bio?: Prisma.StringNullableFilter<"User"> | string | null
   avatarUrl?: Prisma.StringNullableFilter<"User"> | string | null
   role?: Prisma.EnumUserRoleFilter<"User"> | $Enums.UserRole
+  isActive?: Prisma.BoolFilter<"User"> | boolean
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  isPrimaryAdmin?: Prisma.BoolFilter<"User"> | boolean
   stories?: Prisma.StoryListRelationFilter
   authorProfile?: Prisma.XOR<Prisma.AuthorNullableScalarRelationFilter, Prisma.AuthorWhereInput> | null
 }, "id" | "supabaseUserId" | "username">
@@ -257,8 +277,10 @@ export type UserOrderByWithAggregationInput = {
   bio?: Prisma.SortOrderInput | Prisma.SortOrder
   avatarUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   role?: Prisma.SortOrder
+  isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  isPrimaryAdmin?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
   _max?: Prisma.UserMaxOrderByAggregateInput
   _min?: Prisma.UserMinOrderByAggregateInput
@@ -275,8 +297,10 @@ export type UserScalarWhereWithAggregatesInput = {
   bio?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   avatarUrl?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   role?: Prisma.EnumUserRoleWithAggregatesFilter<"User"> | $Enums.UserRole
+  isActive?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
+  isPrimaryAdmin?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
 }
 
 export type UserCreateInput = {
@@ -287,8 +311,10 @@ export type UserCreateInput = {
   bio?: string | null
   avatarUrl?: string | null
   role?: $Enums.UserRole
+  isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  isPrimaryAdmin?: boolean
   stories?: Prisma.StoryCreateNestedManyWithoutAuthorInput
   authorProfile?: Prisma.AuthorCreateNestedOneWithoutUserInput
 }
@@ -301,8 +327,10 @@ export type UserUncheckedCreateInput = {
   bio?: string | null
   avatarUrl?: string | null
   role?: $Enums.UserRole
+  isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  isPrimaryAdmin?: boolean
   stories?: Prisma.StoryUncheckedCreateNestedManyWithoutAuthorInput
   authorProfile?: Prisma.AuthorUncheckedCreateNestedOneWithoutUserInput
 }
@@ -315,8 +343,10 @@ export type UserUpdateInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isPrimaryAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
   stories?: Prisma.StoryUpdateManyWithoutAuthorNestedInput
   authorProfile?: Prisma.AuthorUpdateOneWithoutUserNestedInput
 }
@@ -329,8 +359,10 @@ export type UserUncheckedUpdateInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isPrimaryAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
   stories?: Prisma.StoryUncheckedUpdateManyWithoutAuthorNestedInput
   authorProfile?: Prisma.AuthorUncheckedUpdateOneWithoutUserNestedInput
 }
@@ -343,8 +375,10 @@ export type UserCreateManyInput = {
   bio?: string | null
   avatarUrl?: string | null
   role?: $Enums.UserRole
+  isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  isPrimaryAdmin?: boolean
 }
 
 export type UserUpdateManyMutationInput = {
@@ -355,8 +389,10 @@ export type UserUpdateManyMutationInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isPrimaryAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type UserUncheckedUpdateManyInput = {
@@ -367,8 +403,10 @@ export type UserUncheckedUpdateManyInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isPrimaryAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type UserCountOrderByAggregateInput = {
@@ -379,8 +417,10 @@ export type UserCountOrderByAggregateInput = {
   bio?: Prisma.SortOrder
   avatarUrl?: Prisma.SortOrder
   role?: Prisma.SortOrder
+  isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  isPrimaryAdmin?: Prisma.SortOrder
 }
 
 export type UserMaxOrderByAggregateInput = {
@@ -391,8 +431,10 @@ export type UserMaxOrderByAggregateInput = {
   bio?: Prisma.SortOrder
   avatarUrl?: Prisma.SortOrder
   role?: Prisma.SortOrder
+  isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  isPrimaryAdmin?: Prisma.SortOrder
 }
 
 export type UserMinOrderByAggregateInput = {
@@ -403,8 +445,10 @@ export type UserMinOrderByAggregateInput = {
   bio?: Prisma.SortOrder
   avatarUrl?: Prisma.SortOrder
   role?: Prisma.SortOrder
+  isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  isPrimaryAdmin?: Prisma.SortOrder
 }
 
 export type UserScalarRelationFilter = {
@@ -427,6 +471,10 @@ export type NullableStringFieldUpdateOperationsInput = {
 
 export type EnumUserRoleFieldUpdateOperationsInput = {
   set?: $Enums.UserRole
+}
+
+export type BoolFieldUpdateOperationsInput = {
+  set?: boolean
 }
 
 export type DateTimeFieldUpdateOperationsInput = {
@@ -471,8 +519,10 @@ export type UserCreateWithoutStoriesInput = {
   bio?: string | null
   avatarUrl?: string | null
   role?: $Enums.UserRole
+  isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  isPrimaryAdmin?: boolean
   authorProfile?: Prisma.AuthorCreateNestedOneWithoutUserInput
 }
 
@@ -484,8 +534,10 @@ export type UserUncheckedCreateWithoutStoriesInput = {
   bio?: string | null
   avatarUrl?: string | null
   role?: $Enums.UserRole
+  isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  isPrimaryAdmin?: boolean
   authorProfile?: Prisma.AuthorUncheckedCreateNestedOneWithoutUserInput
 }
 
@@ -513,8 +565,10 @@ export type UserUpdateWithoutStoriesInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isPrimaryAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
   authorProfile?: Prisma.AuthorUpdateOneWithoutUserNestedInput
 }
 
@@ -526,8 +580,10 @@ export type UserUncheckedUpdateWithoutStoriesInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isPrimaryAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
   authorProfile?: Prisma.AuthorUncheckedUpdateOneWithoutUserNestedInput
 }
 
@@ -539,8 +595,10 @@ export type UserCreateWithoutAuthorProfileInput = {
   bio?: string | null
   avatarUrl?: string | null
   role?: $Enums.UserRole
+  isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  isPrimaryAdmin?: boolean
   stories?: Prisma.StoryCreateNestedManyWithoutAuthorInput
 }
 
@@ -552,8 +610,10 @@ export type UserUncheckedCreateWithoutAuthorProfileInput = {
   bio?: string | null
   avatarUrl?: string | null
   role?: $Enums.UserRole
+  isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  isPrimaryAdmin?: boolean
   stories?: Prisma.StoryUncheckedCreateNestedManyWithoutAuthorInput
 }
 
@@ -581,8 +641,10 @@ export type UserUpdateWithoutAuthorProfileInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isPrimaryAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
   stories?: Prisma.StoryUpdateManyWithoutAuthorNestedInput
 }
 
@@ -594,8 +656,10 @@ export type UserUncheckedUpdateWithoutAuthorProfileInput = {
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isPrimaryAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
   stories?: Prisma.StoryUncheckedUpdateManyWithoutAuthorNestedInput
 }
 
@@ -638,8 +702,10 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   bio?: boolean
   avatarUrl?: boolean
   role?: boolean
+  isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  isPrimaryAdmin?: boolean
   stories?: boolean | Prisma.User$storiesArgs<ExtArgs>
   authorProfile?: boolean | Prisma.User$authorProfileArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -653,8 +719,10 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   bio?: boolean
   avatarUrl?: boolean
   role?: boolean
+  isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  isPrimaryAdmin?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -665,8 +733,10 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   bio?: boolean
   avatarUrl?: boolean
   role?: boolean
+  isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  isPrimaryAdmin?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectScalar = {
@@ -677,11 +747,13 @@ export type UserSelectScalar = {
   bio?: boolean
   avatarUrl?: boolean
   role?: boolean
+  isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  isPrimaryAdmin?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "supabaseUserId" | "username" | "displayName" | "bio" | "avatarUrl" | "role" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "supabaseUserId" | "username" | "displayName" | "bio" | "avatarUrl" | "role" | "isActive" | "createdAt" | "updatedAt" | "isPrimaryAdmin", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   stories?: boolean | Prisma.User$storiesArgs<ExtArgs>
   authorProfile?: boolean | Prisma.User$authorProfileArgs<ExtArgs>
@@ -704,8 +776,10 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     bio: string | null
     avatarUrl: string | null
     role: $Enums.UserRole
+    isActive: boolean
     createdAt: Date
     updatedAt: Date
+    isPrimaryAdmin: boolean
   }, ExtArgs["result"]["user"]>
   composites: {}
 }
@@ -1138,8 +1212,10 @@ export interface UserFieldRefs {
   readonly bio: Prisma.FieldRef<"User", 'String'>
   readonly avatarUrl: Prisma.FieldRef<"User", 'String'>
   readonly role: Prisma.FieldRef<"User", 'UserRole'>
+  readonly isActive: Prisma.FieldRef<"User", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"User", 'DateTime'>
+  readonly isPrimaryAdmin: Prisma.FieldRef<"User", 'Boolean'>
 }
     
 

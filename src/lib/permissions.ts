@@ -24,10 +24,16 @@ export async function requireAdmin() {
       role: true,
       username: true,
       displayName: true,
+      isActive: true,
+      isPrimaryAdmin: true,
     },
   });
 
-  if (!dbUser || dbUser.role !== "ADMIN") {
+  if (!dbUser || !dbUser.isActive) {
+    redirect("/login");
+  }
+
+  if (dbUser.role !== "ADMIN") {
     redirect("/");
   }
 

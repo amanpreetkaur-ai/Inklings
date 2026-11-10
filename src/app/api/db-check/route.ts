@@ -11,6 +11,16 @@ export async function GET() {
       SELECT current_database() AS database_name, NOW() AS server_time
     `;
 
+    const users = await prisma.user.findMany({
+  select: {
+    username: true,
+    displayName: true,
+    role: true,
+    isActive: true,
+  },
+  take: 5,
+});
+
     const [authors, books, genres, languages] = await Promise.all([
       prisma.author.count(),
       prisma.book.count(),
@@ -28,6 +38,7 @@ export async function GET() {
         books,
         genres,
         languages,
+        users,
       },
     });
   } catch (error) {
