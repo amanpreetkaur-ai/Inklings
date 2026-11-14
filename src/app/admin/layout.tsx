@@ -13,6 +13,8 @@ const navigation = [
   { label: "Users", href: "/admin/users", icon: "♙" },
 ];
 
+export const instant = false;
+
 export default async function AdminLayout({
   children,
 }: {

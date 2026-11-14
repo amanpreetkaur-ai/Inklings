@@ -14,6 +14,8 @@ type WriterStory = {
   updated_at: string | null;
 };
 
+export const instant = false;
+
 export default async function WriterDashboardPage() {
   const supabase = await createWriterServerClient();
 
