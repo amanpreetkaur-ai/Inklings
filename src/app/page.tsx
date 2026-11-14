@@ -149,7 +149,7 @@ export default function Home() {
       
       <header className="topbar">
         <Link href="/" className="brand">
-          INKLINGS
+          <span>Inklings!</span>
         </Link>
 
         <label className="search-box">
@@ -164,7 +164,7 @@ export default function Home() {
 
         <div className="account-links">
           <Link href="/signup" className="nav-link">
-            Reader sign in
+            <span>Reader sign in</span>
           </Link>
           <Link href="/writer/login" className="nav-link nav-primary">
             Writer sign in
@@ -176,67 +176,6 @@ export default function Home() {
         
 
         <div className="main-content">
-          {/* Explore Genres */}
-          <section className="browse-options">
-
-            <button
-              type="button"
-              className="browse-toggle"
-              onClick={() => setGenresOpen(!genresOpen)}
-              aria-expanded={genresOpen}
-            >
-              <span>Explore genres</span>
-              <span>{genresOpen ? "−" : "+"}</span>
-            </button>
-
-            {genresOpen && (
-              <div className="browse-items">
-                <button
-                  className={`side-button ${selectedGenre === "All" ? "active" : ""}`}
-                  onClick={() => setSelectedGenre("All")}
-                >
-                  All stories
-                </button>
-
-                {genres.map((genre) => (
-                  <button
-                    key={genre}
-                    className={`side-button ${selectedGenre === genre ? "active" : ""}`}
-                    onClick={() => setSelectedGenre(genre)}
-                  >
-                    {genre}
-                  </button>
-                ))}
-              </div>
-            )}
-
-          </section>
-
-
-          {/* Read in Your Language */}
-          <section className="browse-options">
-
-            <button
-              type="button"
-              className="browse-toggle"
-              onClick={() => setLanguagesOpen(!languagesOpen)}
-              aria-expanded={languagesOpen}
-            >
-              <span>Read in your language</span>
-              <span>{languagesOpen ? "−" : "+"}</span>
-            </button>
-
-            {languagesOpen && (
-              <div className="browse-items">
-                {languages.map((language) => (
-                  <span className="language-chip" key={language}>
-                    {language}
-                  </span>
-                ))}
-              </div>
-            )}
-
-          </section>
           
           {search || selectedGenre !== "All" ? (
             <section className="library-section">
@@ -312,9 +251,69 @@ export default function Home() {
             </>
           )}
 
+          {/* Side-by-Side Browse Boxes */}
+          <div className="browse-boxes-grid">
+            {/* Explore Genres Box */}
+            <section className="browse-options">
+              <button
+                type="button"
+                className="browse-toggle"
+                onClick={() => setGenresOpen(!genresOpen)}
+                aria-expanded={genresOpen}
+              >
+                <span>Explore genres</span>
+                <span>{genresOpen ? "−" : "+"}</span>
+              </button>
+
+              {genresOpen && (
+                <div className="browse-items">
+                  <button
+                    className={`side-button ${selectedGenre === "All" ? "active" : ""}`}
+                    onClick={() => setSelectedGenre("All")}
+                  >
+                    All stories
+                  </button>
+
+                  {genres.map((genre) => (
+                    <button
+                      key={genre}
+                      className={`side-button ${selectedGenre === genre ? "active" : ""}`}
+                      onClick={() => setSelectedGenre(genre)}
+                    >
+                      {genre}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </section>
+
+            {/* Read in Your Language Box */}
+            <section className="browse-options">
+              <button
+                type="button"
+                className="browse-toggle"
+                onClick={() => setLanguagesOpen(!languagesOpen)}
+                aria-expanded={languagesOpen}
+              >
+                <span>Read in your language</span>
+                <span>{languagesOpen ? "−" : "+"}</span>
+              </button>
+
+              {languagesOpen && (
+                <div className="browse-items">
+                  {languages.map((language) => (
+                    <span className="language-chip" key={language}>
+                      {language}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </section>
+          </div>
+
           <section className="browse-banner">
             <div>
-              <h2>Have a story of your own?</h2>
+              <h2><span>Have a story of your own?</span></h2>
               <p>Give your imagination a home. Your next chapter begins here.</p>
             </div>
             <Link href="/writer/signup">Become a writer →</Link>
