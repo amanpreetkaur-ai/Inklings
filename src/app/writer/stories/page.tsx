@@ -117,6 +117,20 @@ export default function MyStoriesPage() {
       return;
     }
 
+    if (story.status === "published") {
+      try {
+        await fetch("/api/writer/sync-story", {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ storyId: story.id }),
+        });
+      } catch (syncErr) {
+        console.warn("Could not remove from reader library:", syncErr);
+      }
+    }
+
     setStories((current) =>
       current.filter((item) => item.id !== story.id)
     );
@@ -128,7 +142,7 @@ export default function MyStoriesPage() {
         <Link href="/writer/dashboard" className="auth-brand">
           Inklings
         </Link>
-        <Link href="/writer/dashboard">Writer's Studio</Link>
+        <Link href="/writer/dashboard">Writer&apos;s Studio</Link>
       </header>
 
       <section className="writer-welcome">
@@ -152,7 +166,7 @@ export default function MyStoriesPage() {
         {!loading && !error && stories.length === 0 && (
           <article className="dashboard-card">
             <h2>Your story journey starts here.</h2>
-            <p>You haven't written any stories yet.</p>
+            <p>You haven&apos;t written any stories yet.</p>
             <Link href="/writer/stories/new">
               Write your first story
             </Link>

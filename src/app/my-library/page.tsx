@@ -82,7 +82,7 @@ export default function MyLibraryPage() {
       <header className="library-header">
         <p>YOUR PERSONAL COLLECTION</p>
         <h1>My Library</h1>
-        <p>All the stories you've saved, together in one place.</p>
+        <p>All the stories you&apos;ve saved, together in one place.</p>
       </header>
 
       {error && <p role="alert">{error}</p>}

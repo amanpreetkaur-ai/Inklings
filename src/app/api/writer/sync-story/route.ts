@@ -131,3 +131,81 @@ export async function POST(request: Request) {
     );
   }
 }
+
+export async function DELETE(request: Request) {
+  try {
+    const writerSupabase = await createWriterServerClient();
+
+    const {
+      data: { user },
+      error: authError,
+    } = await writerSupabase.auth.getUser();
+
+    if (authError || !user) {
+      return NextResponse.json(
+        { error: "Please log in to your Writer account." },
+        { status: 401 }
+      );
+    }
+
+    const { storyId } = await request.json();
+
+    if (typeof storyId !== "string" || !storyId.trim()) {
+      return NextResponse.json(
+        { error: "A valid story ID is required." },
+        { status: 400 }
+      );
+    }
+
+    const readerUrl = process.env.READER_SUPABASE_URL;
+    const readerSecret = process.env.READER_SUPABASE_SERVICE_ROLE_KEY;
+
+    if (!readerUrl || !readerSecret) {
+      console.error("Reader Supabase environment variables are missing.");
+      return NextResponse.json(
+        { error: "Reader connection is not configured." },
+        { status: 500 }
+      );
+    }
+
+    const readerResponse = await fetch(
+      `${readerUrl.replace(/\/$/, "")}/rest/v1/published_stories?id=eq.${storyId}&author_id=eq.${user.id}`,
+      {
+        method: "DELETE",
+        headers: {
+          apikey: readerSecret,
+          Authorization: `Bearer ${readerSecret}`,
+        },
+        cache: "no-store",
+      }
+    );
+
+    if (!readerResponse.ok) {
+      const details = await readerResponse.text();
+      console.error("Reader story removal failed:", details);
+      return NextResponse.json(
+        {
+          error: "Could not remove story from reader library.",
+          details,
+        },
+        { status: 502 }
+      );
+    }
+
+    return NextResponse.json({
+      success: true,
+      message: "Story removed from Reader library.",
+    });
+  } catch (error: unknown) {
+    console.error("Story delete API failed:", error);
+
+    return NextResponse.json(
+      {
+        error: "An unexpected error occurred while unpublishing the story.",
+        details:
+          error instanceof Error ? error.message : String(error),
+      },
+      { status: 500 }
+    );
+  }
+}

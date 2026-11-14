@@ -36,7 +36,6 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [selectedGenre, setSelectedGenre] = useState("All");
-  const [menuOpen, setMenuOpen] = useState(false);
   const [genresOpen, setGenresOpen] = useState(false);
   const [languagesOpen, setLanguagesOpen] = useState(false);
 

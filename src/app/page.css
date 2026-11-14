@@ -1,320 +1,290 @@
-/* Base pastel background for the whole page to make the glass effect pop */
+/* page.css - Inklings Platform Glassmorphism Theme (Apple-inspired Earth Tones) */
+
+/* --- Global & Background --- */
 body {
-margin: 0;
-font-family: system-ui, -apple-system, sans-serif;
-background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
-background-attachment: fixed;
-color: #333;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #3d3d3d; 
+  background: 
+    radial-gradient(at 10% 20%, hsla(38, 40%, 90%, 1) 0, transparent 50%), 
+    radial-gradient(at 90% 10%, hsla(15, 30%, 92%, 1) 0, transparent 50%), 
+    radial-gradient(at 50% 80%, hsla(120, 15%, 90%, 1) 0, transparent 50%), 
+    linear-gradient(135deg, #fdfbf7 0%, #f4f1ea 100%); 
+  background-attachment: fixed;
+  min-height: 100vh;
 }
 
 .library {
-min-height: 100vh;
-display: flex;
-flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-/* Glassmorphism Header */
+/* --- Topbar (Apple Glass UI) --- */
 .topbar {
+  position: sticky;
+  top: 0;
   z-index: 100;
+  display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 5%;
-  display: flex;
-  position: sticky;
-  top: 0;
-  
-  /* Glassmorphism Fixes */
-  background: rgba(116, 88, 255, 0.5); /* Slightly more transparent than #7458ffae */
-  -webkit-backdrop-filter: blur(16px); /* For Safari */
-  backdrop-filter: blur(5px); /* For Firefox and Chrome */
+  background: rgba(253, 251, 247, 0.7); 
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.05); 
 }
 
 .brand {
-font-weight: 800;
-font-size: 1.25rem;
-text-decoration: none;
-color: #2c3e50;
-letter-spacing: 1px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2c2c2e;
+  text-decoration: none;
+  letter-spacing: -0.5px; 
 }
-
 .brand span {
-color: #69465f;
+  font-style: italic;
+  color: #8c7a6b; 
 }
 
-/* Search Box */
+/* --- Search Box --- */
 .search-box {
-display: flex;
-align-items: center;
-gap: 0.5rem;
-background: rgba(255, 255, 255, 0.782);
-padding: 0.5rem 1rem;
-border-radius: 20px;
-border: 1px solid rgba(255, 255, 255, 0.5);
-width: 100%;
-max-width: 400px;
-transition: background 0.3s ease;
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.04); 
+  border-radius: 12px; 
+  padding: 0.5rem 1rem;
+  width: 100%;
+  max-width: 400px;
+  border: 1px solid rgba(0, 0, 0, 0.02);
 }
+.search-box span { margin-right: 0.5rem; color: #8e8e93; }
+.search-box input { border: none; background: transparent; outline: none; width: 100%; color: #1c1c1e; font-size: 1rem; }
+.search-box input::placeholder { color: #8e8e93; }
 
-.search-box:focus-within {
-background: rgba(255, 255, 255, 0.6);
-box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.8);
-}
-
-.search-box input {
-border: none;
-background: transparent;
-outline: none;
-width: 100%;
-font-size: 0.95rem;
-color: #333;
-}
-
-.account-links {
-display: flex;
-gap: 1rem;
-align-items: center;
-}
-
-.nav-link {
-text-decoration: none;
-color: #4a5568;
-font-weight: 500;
-font-size: 0.9rem;
-}
-
+/* --- Account Links --- */
+.account-links { display: flex; gap: 1.5rem; align-items: center; }
+.nav-link { color: #2c2c2e; text-decoration: none; font-weight: 500; transition: opacity 0.2s; font-size: 0.95rem; }
+.nav-link:hover { opacity: 0.7; }
 .nav-primary {
-background: rgba(255, 255, 255, 0.5);
-padding: 0.5rem 1.25rem;
-border-radius: 20px;
-border: 1px solid rgba(255, 255, 255, 0.6);
-transition: all 0.2s;
+  background: #2c2c2e; 
+  color: #ffffff;
+  padding: 0.5rem 1.25rem;
+  border-radius: 99px;
+  border: none;
 }
+.nav-primary:hover { opacity: 0.9; }
 
-.nav-primary:hover {
-background: rgba(255, 255, 255, 0.8);
-}
-
-/* Layout */
+/* --- Main Layout & Browsing --- */
 .library-layout {
-padding: 2rem 5%;
-flex: 1;
+  padding: 2.5rem 5%;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-/* Glassmorphism Sections (Browse Options) */
 .browse-options {
-background: rgba(255, 255, 255, 0.2);
-backdrop-filter: blur(10px);
--webkit-backdrop-filter: blur(10px);
-border: 1px solid rgba(255, 255, 255, 0.4);
-border-radius: 16px;
-margin-bottom: 1.5rem;
-overflow: hidden;
-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+  background: rgba(255, 255, 255, 0.5);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border: 0.5px solid rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.02); 
 }
-
 .browse-toggle {
-width: 100%;
-display: flex;
-justify-content: space-between;
-background: transparent;
-border: none;
-padding: 1rem 1.5rem;
-font-size: 1rem;
-font-weight: 600;
-color: #2d3748;
-cursor: pointer;
+  display: flex; justify-content: space-between; width: 100%;
+  background: transparent; border: none; font-size: 1.1rem;
+  font-weight: 600; color: #2c2c2e; cursor: pointer; padding: 0;
 }
-
-.browse-items {
-padding: 0 1.5rem 1.5rem;
-display: flex;
-flex-wrap: wrap;
-gap: 0.75rem;
-}
-
-/* Chips & Buttons */
+.browse-items { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.25rem; }
 .side-button, .language-chip {
-background: rgba(255, 255, 255, 0.3);
-border: 1px solid rgba(255, 255, 255, 0.5);
-padding: 0.5rem 1rem;
-border-radius: 20px;
-cursor: pointer;
-font-size: 0.85rem;
-color: #4a5568;
-transition: all 0.2s ease;
+  background: rgba(255, 255, 255, 0.6); 
+  border: 0.5px solid rgba(0, 0, 0, 0.08);
+  padding: 0.5rem 1rem; border-radius: 99px; cursor: pointer; transition: all 0.2s ease;
+  color: #3a3a3c; font-size: 0.9rem; font-weight: 500;
 }
-
 .side-button:hover, .language-chip:hover {
-background: rgba(255, 255, 255, 0.6);
-transform: translateY(-1px);
+  background: rgba(0, 0, 0, 0.03); 
 }
-
 .side-button.active {
-background: rgba(255, 255, 255, 0.8);
-font-weight: 600;
-box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  background: #2c2c2e; color: white; border-color: #2c2c2e;
 }
 
-/* Shelves (CSS Grid) */
-.library-section {
-margin-top: 3rem;
-margin-bottom: 3rem;
-}
-
+.library-section { margin: 4rem 0; }
 .section-heading {
-display: flex;
-justify-content: space-between;
-align-items: flex-end;
-margin-bottom: 1.5rem;
-border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-padding-bottom: 0.5rem;
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 2rem; border-bottom: 1px solid rgba(0, 0, 0, 0.05); padding-bottom: 1rem;
+}
+.section-kicker { font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; color: #8c7a6b; margin: 0 0 0.25rem 0; text-transform: uppercase; }
+.section-heading h2 { font-size: 2rem; margin: 0; color: #1c1c1e; font-weight: 700; letter-spacing: -0.5px; }
+.section-count {
+  background: rgba(0, 0, 0, 0.04); color: #48484a; padding: 0.25rem 0.75rem;
+  border-radius: 99px; font-size: 0.85rem; font-weight: 500;
 }
 
-.section-kicker {
-font-size: 0.75rem;
-font-weight: 700;
-letter-spacing: 1px;
-color: #718096;
-margin: 0 0 0.25rem 0;
-}
-
-.section-heading h2 {
-margin: 0;
-font-size: 1.75rem;
-color: #2d3748;
-}
-
+/* --- Bookshelf Grid --- */
 .book-shelf {
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2.5rem 1.5rem;
+}
+.empty-shelf {
+  background: rgba(255, 255, 255, 0.5); backdrop-filter: blur(12px);
+  border: 1px dashed rgba(0, 0, 0, 0.1); border-radius: 16px;
+  padding: 4rem 2rem; text-align: center; color: #8e8e93;
+  display: flex; flex-direction: column; align-items: center; gap: 1rem;
 }
 
-/* Glass Book Cards */
+/* =========================================
+   Book Card (FOOLPROOF ABSOLUTE POSITIONING)
+   ========================================= */
 .book-card {
-text-decoration: none;
-color: inherit;
-background: rgba(255, 255, 255, 0.15);
-backdrop-filter: blur(8px);
--webkit-backdrop-filter: blur(8px);
-border: 1px solid rgba(255, 255, 255, 0.4);
-border-radius: 16px;
-padding: 1rem;
-display: flex;
-flex-direction: column;
-transition: all 0.3s ease;
-box-shadow: 0 4px 15px rgba(31, 38, 135, 0.05);
+  position: relative; 
+  min-height: 450px; 
+  border-radius: 18px;
+  overflow: hidden; 
+  text-decoration: none;
+  display: block; 
+  border: 0.5px solid rgba(0, 0, 0, 0.08); 
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
+  background: #fcfcfc; 
 }
 
 .book-card:hover {
-transform: translateY(-5px);
-background: rgba(255, 255, 255, 0.3);
-box-shadow: 0 10px 25px rgba(31, 38, 135, 0.1);
-border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
 }
 
+/* 1. The Image Layer (Behind & Full Cover) */
 .book-cover-art {
-height: 280px;
-border-radius: 8px;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-text-align: center;
-padding: 1.5rem;
-color: white;
-box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
-margin-bottom: 1rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; 
+  background-color: #d9cdb8;
+  background-image: linear-gradient(145deg, #d9cdb8, #b8a892); 
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 3rem 1.5rem;
+  text-align: center;
+  color: #2c2c2e;
 }
 
-.cover-title {
-font-size: 1.25rem;
-font-weight: 700;
-margin: 0.5rem 0;
-text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+/* 2. The Text Container (No backgrounds or masks here) */
+.book-details {
+  position: absolute; 
+  bottom: 0; 
+  left: 0;
+  right: 0;
+  z-index: 2; 
+  
+  width: 100%;
+  box-sizing: border-box;
+  padding: 5rem 1.5rem 1.25rem; /* Large top padding to let image peek through */
+  
+  display: flex;
+  flex-direction: column;
+  color: #1c1c1e;
+}
+
+/* 3. The Pseudo-element (Handles the Glass & Mask perfectly) */
+.book-details::before {
+  content: "";
+  position: absolute;
+  inset: 0; /* Stretches exactly to cover .book-details */
+  z-index: -1; /* Drops behind the text */
+  
+  /* Apple glass effect */
+  background: rgba(250, 250, 250, 0.95);
+  -webkit-backdrop-filter: saturate(180%) blur(16px);
+  backdrop-filter: saturate(180%) blur(16px);
+  
+  /* The mask smoothly fades both the background color AND the blur */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 40%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 40%);
+}
+
+/* Fallback text formatting */
+.cover-ornament { font-size: 2rem; margin-bottom: 0.5rem; opacity: 0.7; color: #5a4f44; }
+.cover-title { font-size: 1.5rem; font-weight: bold; line-height: 1.3; margin-bottom: 0.5rem; font-family: Georgia, serif; color: #2c2c2e;}
+.cover-rule { letter-spacing: 2px; margin-bottom: 0.5rem; opacity: 0.5; color: #5a4f44;}
+.cover-subtitle { font-size: 0.75rem; letter-spacing: 2px; opacity: 0.8; text-transform: uppercase; color: #5a4f44;}
+
+/* Overlaid Text Formatting */
+.book-genre {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #8c7a6b !important; 
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
 }
 
 .book-details h3 {
-margin: 0.25rem 0;
-font-size: 1.1rem;
-color: #2d3748;
+  margin: 0 0 0.25rem 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1c1c1e !important; 
+  letter-spacing: -0.2px;
+  line-height: 1.3;
 }
 
-.book-genre {
-font-size: 0.75rem;
-text-transform: uppercase;
-letter-spacing: 0.5px;
-color: #718096;
+.book-author {
+  color: #636366 !important;
+  font-size: 0.9rem;
+  margin: 0 0 0.75rem 0;
 }
 
 .book-description {
-font-size: 0.85rem;
-color: #4a5568;
-display: -webkit-box;
--webkit-line-clamp: 3;
--webkit-box-orient: vertical;
-overflow: hidden;
-margin-top: 0.5rem;
+  color: #48484a !important;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0 0 1rem 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; 
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .read-hint {
-margin-top: auto;
-padding-top: 1rem;
-font-size: 0.85rem;
-font-weight: 600;
-color: #69465f;
-opacity: 0;
-transition: opacity 0.3s ease;
+  margin-top: auto;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #8c7a6b !important;
+  display: flex;
+  align-items: center;
+  transition: gap 0.2s ease;
+  gap: 4px;
 }
+.book-card:hover .read-hint { gap: 8px; color: #5a4f44 !important; }
 
-.book-card:hover .read-hint {
-opacity: 1;
-}
-
-/* Banner */
+/* --- Banner & Footer --- */
 .browse-banner {
-margin-top: 4rem;
-padding: 3rem;
-background: rgba(255, 255, 255, 0.2);
-backdrop-filter: blur(12px);
--webkit-backdrop-filter: blur(12px);
-border: 1px solid rgba(255, 255, 255, 0.5);
-border-radius: 24px;
-display: flex;
-justify-content: space-between;
-align-items: center;
-box-shadow: 0 8px 32px rgba(31, 38, 135, 0.07);
+  margin: 5rem 0 3rem; padding: 3rem;
+  
+  background: linear-gradient(135deg, #d3c4b1, #a99684);
+  -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px);
+  border-radius: 24px; display: flex; justify-content: space-between; align-items: center;
+  color: #fdfbf7; box-shadow: 0 12px 32px rgba(136, 118, 102, 0.15); border: 0.5px solid rgba(255,255,255,0.2);
 }
-
-.browse-banner h2 {
-margin: 0 0 0.5rem 0;
-color: #2d3748;
-}
-
-.browse-banner p {
-margin: 0;
-color: #4a5568;
-}
-
+.browse-banner h2 { font-size: 2rem; margin: 0 0 0.5rem 0; font-weight: 700; letter-spacing: -0.5px;}
+.browse-banner p { margin: 0; font-size: 1.1rem; opacity: 0.9; }
 .browse-banner a {
-background: #69465f;
-color: white;
-text-decoration: none;
-padding: 0.75rem 1.5rem;
-border-radius: 30px;
-font-weight: 600;
-transition: background 0.2s;
+  background: #fdfbf7; color: #5a4f44; padding: 1rem 2rem; border-radius: 99px;
+  text-decoration: none; font-weight: 600; transition: transform 0.2s, box-shadow 0.2s;
 }
-
-.browse-banner a:hover {
-background: #4c3148;
-}
-
-.site-footer {
-margin-top: 3rem;
-padding-top: 2rem;
-border-top: 1px solid rgba(255, 255, 255, 0.3);
-text-align: center;
-color: #718096;
-font-size: 0.85rem;
-}
+.browse-banner a:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+.site-footer { text-align: center; padding: 2rem 0; color: #8e8e93; font-size: 0.85rem; border-top: 1px solid rgba(0, 0, 0, 0.05); }

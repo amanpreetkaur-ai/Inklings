@@ -123,7 +123,7 @@ export default function LoginPage() {
         </form>
 
         <p className="auth-switch">
-          Don't have an account? <Link href="/signup">Sign up</Link>
+          Don&apos;t have an account? <Link href="/signup">Sign up</Link>
         </p>
 
         <p className="auth-switch">

@@ -166,7 +166,7 @@ export default function StoriesPage() {
 
       {loadError && (
         <section className="stories-empty" role="alert">
-          <h2>Stories couldn't load</h2>
+          <h2>Stories couldn&apos;t load</h2>
           <p>{loadError}</p>
           <button
             type="button"

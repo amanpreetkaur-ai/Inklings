@@ -1,5 +1,4 @@
 
-import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { requireAdmin } from "@/lib/permissions";
 import UserManagement from "./UserManagement";

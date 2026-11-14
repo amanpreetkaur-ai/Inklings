@@ -116,6 +116,7 @@ export default function WriterProfilePage() {
 
       {avatarUrl.trim() && (
         <div style={{ marginBottom: "20px" }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={avatarUrl}
             alt="Profile preview"

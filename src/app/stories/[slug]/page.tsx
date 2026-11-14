@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { Suspense, useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
@@ -35,12 +35,12 @@ type Comment = {
   created_at: string;
 };
 
-export default function StoryPage() {
+function StoryPageContent() {
   const params = useParams<{ slug: string }>();
   const slug = Array.isArray(params?.slug) ? params.slug[0] : params?.slug;
 
   const [story, setStory] = useState<Story | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(Boolean(slug));
   const [loadError, setLoadError] = useState("");
 
   const [readerId, setReaderId] = useState<string | null>(null);
@@ -99,7 +99,6 @@ export default function StoryPage() {
 
   useEffect(() => {
     if (!slug) {
-      setIsLoading(false);
       return;
     }
 
@@ -623,4 +622,26 @@ function actionButtonStyle(
     cursor: disabled ? "not-allowed" : "pointer",
     opacity: disabled ? 0.6 : 1,
   };
+}
+
+export default function StoryPage() {
+  return (
+    <Suspense
+      fallback={
+        <main className="story-reader">
+          <header className="dashboard-header">
+            <Link href="/dashboard" className="dashboard-brand">
+              Inklings
+            </Link>
+            <Link href="/stories">Explore Stories</Link>
+          </header>
+          <article className="story-content">
+            <p role="status">Opening your story...</p>
+          </article>
+        </main>
+      }
+    >
+      <StoryPageContent />
+    </Suspense>
+  );
 }
