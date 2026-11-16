@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useEffect, useState } from "react";
@@ -6,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { stories } from "@/data/stories";
+import "./page.css";
 
 type Bookmark = {
   id: string;
@@ -18,6 +18,7 @@ export default function MyLibraryPage() {
   const [bookmarks, setBookmarks] = useState<Bookmark[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     async function loadLibrary() {
@@ -73,51 +74,118 @@ export default function MyLibraryPage() {
       } => Boolean(item.story)
     );
 
+  const filteredStories = savedStories.filter(({ story }) => {
+    const query = search.trim().toLowerCase();
+    if (!query) return true;
+    return (
+      story.title.toLowerCase().includes(query) ||
+      story.author.toLowerCase().includes(query) ||
+      story.genre.toLowerCase().includes(query) ||
+      story.description.toLowerCase().includes(query)
+    );
+  });
+
   if (loading) {
-    return <main className="library-page">Loading your library...</main>;
+    return (
+      <main className="library-page">
+        <p className="library-loading">Loading your library...</p>
+      </main>
+    );
   }
 
   return (
     <main className="library-page">
-      <header className="library-header">
-        <p>YOUR PERSONAL COLLECTION</p>
-        <h1>My Library</h1>
-        <p>All the stories you've saved, together in one place.</p>
+      {/* Sticky Frosted Topbar */}
+      <header className="topbar">
+        <Link href="/" className="brand">
+          Inklings!
+        </Link>
+
+        <label className="search-box">
+          <span aria-hidden="true">⌕</span>
+          <input
+            type="search"
+            value={search}
+            onChange={(event) => setSearch(event.target.value)}
+            placeholder="Search saved stories..."
+            aria-label="Search saved stories"
+          />
+        </label>
+
+        <div className="account-links">
+          <Link href="/dashboard" className="nav-link nav-primary">
+            Account
+          </Link>
+        </div>
       </header>
 
-      {error && <p role="alert">{error}</p>}
-
-      {!error && savedStories.length === 0 && (
-        <section className="library-empty">
-          <h2>Your library is waiting for a story.</h2>
-          <p>
-            Explore Inklings, find a story you love, and bookmark it
-            to keep it here.
+      {/* Full-width Horizontal Header Banner */}
+      <section className="library-welcome-banner">
+        <div className="library-banner-content">
+          <p className="library-eyebrow">YOUR PERSONAL COLLECTION</p>
+          <h1>My Library</h1>
+          <p className="library-subtitle">
+            All the stories you&apos;ve saved, together in one place.
           </p>
-          <Link href="/stories">Explore Stories</Link>
-        </section>
-      )}
+        </div>
+      </section>
 
-      {savedStories.length > 0 && (
-        <section className="library-grid">
-          {savedStories.map(({ bookmark, story }) => (
-            <article className="library-card" key={bookmark.id}>
-              <p className="library-genre">{story.genre}</p>
-              <h2>{story.title}</h2>
-              <p className="library-author">By {story.author}</p>
-              <p>{story.description}</p>
+      {/* Content Container (Stories Grid starts strictly below the banner) */}
+      <div className="library-container">
+        {error && <p className="library-error" role="alert">{error}</p>}
 
-              <Link href={`/stories/${story.slug}`}>
-                Read Story →
-              </Link>
-            </article>
-          ))}
-        </section>
-      )}
+        {!error && savedStories.length === 0 && (
+          <section className="empty-shelf">
+            <span>🔖</span>
+            <h2>Your library is waiting for a story.</h2>
+            <p>
+              Explore Inklings, find a story you love, and bookmark it
+              to keep it here.
+            </p>
+            <Link href="/stories" className="empty-action-btn">
+              Explore Stories
+            </Link>
+          </section>
+        )}
 
-      <p className="library-back">
-        <Link href="/stories">← Explore more stories</Link>
-      </p>
+        {savedStories.length > 0 && filteredStories.length === 0 && (
+          <section className="empty-shelf">
+            <p>No saved stories match your search.</p>
+          </section>
+        )}
+
+        {filteredStories.length > 0 && (
+          <section className="book-shelf-grid">
+            {filteredStories.map(({ bookmark, story }) => (
+              <article className="book-card" key={bookmark.id}>
+                <div className="book-cover-art">
+                  <span className="cover-ornament">❧</span>
+                  <span className="cover-title">{story.title}</span>
+                  <span className="cover-rule">✦ ─ ✦</span>
+                  <span className="cover-subtitle">SAVED STORY</span>
+                </div>
+
+                <div className="book-details">
+                  <span className="book-genre">{story.genre}</span>
+                  <h3>{story.title}</h3>
+                  <p className="book-author">By {story.author}</p>
+                  <p className="book-description">{story.description}</p>
+
+                  <Link className="read-hint" href={`/stories/${story.slug}`}>
+                    Read story →
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </section>
+        )}
+
+        <div className="library-footer-nav">
+          <Link href="/stories" className="nav-link">
+            ← Explore more stories
+          </Link>
+        </div>
+      </div>
     </main>
   );
 }

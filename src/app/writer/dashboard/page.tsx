@@ -1,6 +1,7 @@
 
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { connection } from "next/server";
 import { createWriterServerClient } from "@/lib/supabase/writer-server";
 import { createClient } from "@supabase/supabase-js";
 
@@ -14,7 +15,10 @@ type WriterStory = {
   updated_at: string | null;
 };
 
+export const instant = false;
+
 export default async function WriterDashboardPage() {
+  await connection();
   const supabase = await createWriterServerClient();
 
   const {
@@ -149,14 +153,6 @@ export default async function WriterDashboardPage() {
   const avatarUrl = profile?.avatar_url || "";
   const allStories = (stories || []) as WriterStory[];
 
-  const publishedStories = allStories.filter(
-    (story) => story.status === "published"
-  );
-
-  const draftStories = allStories.filter(
-    (story) => story.status === "draft"
-  );
-
   function formatDate(date: string | null) {
     if (!date) return "Recently";
     return new Date(date).toLocaleDateString("en-IN", {
@@ -172,13 +168,12 @@ export default async function WriterDashboardPage() {
 
       <header className="studio-nav">
         <Link href="/" className="studio-brand">
-          Inklings
+          Inklings!
         </Link>
-        <span className="studio-nav-label">YOUR WRITER'S STUDIO</span>
+        <span className="studio-nav-label">YOUR WRITER&apos;S STUDIO</span>
       </header>
 
       <div className="studio-container">
-        <p className="studio-eyebrow">A home for your imagination</p>
 
         <section className="studio-hero">
           <div className="studio-profile">
@@ -286,7 +281,7 @@ export default async function WriterDashboardPage() {
             {storiesError ? (
               <div className="studio-empty">
                 <div className="studio-empty-icon">📖</div>
-                <h3>Your works couldn't be loaded</h3>
+                <h3>Your works couldn&apos;t be loaded</h3>
                 <p className="studio-muted">
                   Please refresh the page. If this continues, check the
                   stories table permissions in your Writer Supabase project.
@@ -372,7 +367,7 @@ export default async function WriterDashboardPage() {
 
             <Link href="/writer/profile" className="studio-work-card">
               <span className="studio-tag">Your identity</span>
-              <h3>🌷 Your writer's note</h3>
+              <h3>🌷 Your writer&apos;s note</h3>
               <p>
                 Tell readers who you are, what you believe in, and what
                 inspires the words you write.

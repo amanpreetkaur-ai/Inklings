@@ -16,7 +16,7 @@ export async function updateUserProfile(
     bio: string;
   }
 ) {
-  const admin = await requireAdmin();
+  await requireAdmin();
 
   try {
     const displayName = formData.displayName.trim();

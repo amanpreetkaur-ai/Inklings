@@ -199,7 +199,7 @@ export default function NewStoryPage() {
       </header>
 
       <section className="editor-container">
-        <p className="dashboard-eyebrow">WRITER'S STUDIO</p>
+        <p className="dashboard-eyebrow">WRITER&apos;S STUDIO</p>
         <h1>Create a New Work</h1>
         <p className="editor-subtitle">
           A story, a poem, a thought at midnight — give your words a home.

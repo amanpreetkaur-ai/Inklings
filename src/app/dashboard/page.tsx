@@ -1,10 +1,15 @@
-
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { connection } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import LogoutButton from "@/components/auth/LogoutButton";
+import './page.css'
+
+export const instant = false;
 
 export default async function DashboardPage() {
+  await connection();
+
   const supabase = await createClient();
 
   const {
@@ -27,14 +32,18 @@ export default async function DashboardPage() {
     <main className="dashboard-page">
       <header className="dashboard-header">
         <Link href="/" className="dashboard-brand">
-          Inklings
+          Inklings!
         </Link>
 
         <div className="dashboard-header-actions">
-          <span className="dashboard-label">MY DASHBOARD</span>
           <LogoutButton />
         </div>
       </header>
+
+      {/* Independent section aligned with page container width and padding */}
+      {/* <section className="dashboard-section-header">
+        <span className="dashboard-label">My Desk</span>
+      </section> */}
 
       <section className="dashboard-welcome">
         <p className="dashboard-eyebrow">
@@ -44,8 +53,7 @@ export default async function DashboardPage() {
         <h1>Welcome back, {displayName}!</h1>
 
         <p className="dashboard-description">
-          Every reader has a story. Every writer has a beginning.
-          What will yours be today?
+          Every reader has a story. Every writer has a beginning. What will yours be today?
         </p>
 
         <div className="dashboard-profile">

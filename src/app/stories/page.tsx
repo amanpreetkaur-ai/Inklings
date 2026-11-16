@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { stories as sampleStories } from "@/data/stories";
 import { createClient } from "@/lib/supabase/client";
+import './page.css'
 
 type ReaderStory = {
   id: string;
@@ -119,12 +120,28 @@ export default function StoriesPage() {
 
   return (
     <main className="stories-page">
-      <header className="dashboard-header">
-        <Link href="/dashboard" className="dashboard-brand">
-          Inklings
+      <header className="topbar">
+        <Link href="/" className="brand">
+          <span>Inklings!</span>
         </Link>
 
-        <Link href="/dashboard">My Dashboard</Link>
+        <label className="search-box">
+          <span aria-hidden="true">⌕</span>
+          <input
+            id="story-search"
+            type="search"
+            placeholder="Search stories, genres..."
+            value={search}
+            onChange={(event) => setSearch(event.target.value)}
+            aria-label="Search stories"
+          />
+        </label>
+
+        <div className="account-links">
+          <Link href="/dashboard" className="nav-link nav-primary">
+            Account
+          </Link>
+        </div>
       </header>
 
       <section className="stories-intro">
@@ -166,7 +183,7 @@ export default function StoriesPage() {
 
       {loadError && (
         <section className="stories-empty" role="alert">
-          <h2>Stories couldn't load</h2>
+          <h2>Stories couldn&apos;t load</h2>
           <p>{loadError}</p>
           <button
             type="button"
@@ -179,10 +196,12 @@ export default function StoriesPage() {
 
       {!isLoading && !loadError && (
         <>
-          <p aria-live="polite">
-            {filteredStories.length}{" "}
-            {filteredStories.length === 1 ? "story" : "stories"} found
-          </p>
+          <div className="stories-count-container">
+            <span className="section-count" aria-live="polite">
+              {filteredStories.length}{" "}
+              {filteredStories.length === 1 ? "story" : "stories"} found
+            </span>
+          </div>
 
           {filteredStories.length > 0 ? (
             <section className="stories-grid">

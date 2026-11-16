@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { createWriterClient } from "@/lib/supabase/writer-client";
@@ -29,7 +29,7 @@ type Story = {
   published_at: string | null;
 };
 
-export default function EditStoryPage() {
+function EditStoryContent() {
   const params = useParams<{ id: string }>();
   const router = useRouter();
 
@@ -203,7 +203,7 @@ export default function EditStoryPage() {
   if (!story) {
     return (
       <main className="writer-dashboard">
-        <h1>Couldn't open this story</h1>
+        <h1>Couldn&apos;t open this story</h1>
         <p className="auth-error">
           {error || "Story not found."}
         </p>
@@ -222,7 +222,7 @@ export default function EditStoryPage() {
       </header>
 
       <section className="editor-container">
-        <p className="dashboard-eyebrow">WRITER'S STUDIO</p>
+        <p className="dashboard-eyebrow">WRITER&apos;S STUDIO</p>
         <h1>Edit Your Story</h1>
         <p className="editor-subtitle">
           Keep writing, revising, and bringing your ideas to life.
@@ -329,5 +329,19 @@ export default function EditStoryPage() {
         </form>
       </section>
     </main>
+  );
+}
+
+export default function EditStoryPage() {
+  return (
+    <Suspense
+      fallback={
+        <main className="writer-dashboard">
+          <p>Loading your story...</p>
+        </main>
+      }
+    >
+      <EditStoryContent />
+    </Suspense>
   );
 }
