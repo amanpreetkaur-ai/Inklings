@@ -1,6 +1,7 @@
 
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { connection } from "next/server";
 import { createWriterServerClient } from "@/lib/supabase/writer-server";
 import { createClient } from "@supabase/supabase-js";
 
@@ -17,6 +18,7 @@ type WriterStory = {
 export const instant = false;
 
 export default async function WriterDashboardPage() {
+  await connection();
   const supabase = await createWriterServerClient();
 
   const {
@@ -166,13 +168,12 @@ export default async function WriterDashboardPage() {
 
       <header className="studio-nav">
         <Link href="/" className="studio-brand">
-          Inklings
+          Inklings!
         </Link>
         <span className="studio-nav-label">YOUR WRITER&apos;S STUDIO</span>
       </header>
 
       <div className="studio-container">
-        <p className="studio-eyebrow">A home for your imagination</p>
 
         <section className="studio-hero">
           <div className="studio-profile">
